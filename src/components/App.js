@@ -1,13 +1,10 @@
 import React from 'react';
 import '../styles/App.css';
 
-
-const App = () => {
+function App() {
   return (
-    <div id="main">
-
-    </div>
-  )
+    <div id="main" />
+  );
 }
 
 export default App;
