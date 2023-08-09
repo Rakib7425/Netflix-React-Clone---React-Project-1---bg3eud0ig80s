@@ -4,7 +4,7 @@ Netflix clone combines the desire to unleash powerful creativity with the indust
 
 This application includes user authentication, dark mode, sort movie on the basis of categories or genres, viewing movie and actor details, adding a movie to favorites or watchlist and many more functionalities.
 
-Alan works as in-app voice assistant which create conversational experiences for filmpire.
+Alan works as in-app voice assistant which create conversational experiences for netflix.
 
 # Getting Started with Create React App
 
