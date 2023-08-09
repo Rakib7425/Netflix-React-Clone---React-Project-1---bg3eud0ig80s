@@ -54,7 +54,6 @@
     "eslint-plugin-react": "^7.30.0",
     "eslint-plugin-react-hooks": "^4.5.0"
   },
-  "main": "index.js",
   "repository": "https://github.com/Rakib7425/netflix-clone-newtonSchool.git",
   "author": "Rakibul Islam <103498045+Rakib7425@users.noreply.github.com>",
   "license": "MIT"

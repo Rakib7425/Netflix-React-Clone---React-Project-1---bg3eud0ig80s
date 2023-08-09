@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const tmdbApiKey = process.env.REACT_APP_TMDB_KEY;
+// const tmdbApiKey = process.env.REACT_APP_TMDB_KEY;
+const tmdbApiKey = 'c43eafb6cfde3357615b65d291332480';
 
 export const tmdbApi = createApi({
   reducerPath: 'tmdbApi',
@@ -42,6 +43,7 @@ export const tmdbApi = createApi({
 
     // Get Recommendations
     getRecommendations: builder.query({
+      // eslint-disable-next-line camelcase
       query: ({ movie_id, list }) => `/movie/${movie_id}/${list}?api_key=${tmdbApiKey}`,
     }),
 
