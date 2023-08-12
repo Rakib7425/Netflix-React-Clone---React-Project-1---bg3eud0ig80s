@@ -13,9 +13,9 @@ const GetStarted = () => {
                     <div className="get-started-main">
                         <p className='p1'>Unlimited movies, TV shows and more</p>
                         <p className='p2'>Watch anywhere. Cancel anytime.</p>
-                        <p className='p3'>Ready to watch? Enter your email to create or restart your membership.</p>
                     </div>
                     <form className="form" onSubmit={(e) => e.preventDefault()}>
+                        <p className='p3'>Ready to watch? Enter your email to create or restart your membership.</p>
                         <div className="mailInput">
                             <input
                                 className='input'
