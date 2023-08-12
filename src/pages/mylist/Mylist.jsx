@@ -6,7 +6,7 @@ const Mylist = () => {
     return (
         <ContentWrapper>
             <div className='_main_'>
-                <h1>
+                <h1 className='pageTitle'>
                     Mylist
                 </h1>
             </div>
