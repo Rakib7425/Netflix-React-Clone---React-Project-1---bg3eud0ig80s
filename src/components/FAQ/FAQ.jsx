@@ -3,7 +3,7 @@ import './style.scss'
 const FAQ = () => {
     return (
         <div className='faq-main'>
-            <img src="./login-bg.jpg" alt="bg" className='img' />
+            {/* <img src="./login-bg.jpg" alt="bg" className='img' /> */}
             <div className="header">
                 <h1>Frequently Asked Questions</h1>
             </div>

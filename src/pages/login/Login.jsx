@@ -5,14 +5,15 @@ import { ImGithub } from 'react-icons/im';
 import { BsTwitter } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import FAQ from '../../components/FAQ/FAQ';
+import ContentWrapper from '../../components/contentWrapper/ContentWrapper';
 
 const Login = () => {
     return (
         <>
             <section className='login-main'>
-                <div>
+                {/* <ContentWrapper>
                     <h1>Welcome to Netflix</h1>
-                </div>
+                </ContentWrapper> */}
                 <div className="bg-img">
                     <img src={'./login-bg.jpg'} alt="" />
                 </div>
@@ -57,11 +58,10 @@ const Login = () => {
                 </div>
             </section>
 
-            {/* <ContentWrapper> */}
+
             <div className='faq'>
                 <FAQ />
             </div>
-            {/* </ContentWrapper> */}
         </>
     )
 }

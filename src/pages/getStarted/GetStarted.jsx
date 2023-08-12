@@ -7,20 +7,28 @@ const GetStarted = () => {
 
     return (
         <>
-            <img src="./main-bg.jpg" alt="" className="img" />
-            <ContentWrapper>
-                <section id="get-started">
+            {/* <img src="./main-bg.jpg" alt="" className="img" /> */}
+            <section id="get-started">
+                <ContentWrapper>
                     <div className="get-started-main">
-                        <h1>Unlimited movies, TV shows and more</h1>
-                        <h3>Watch anywhere. Cancel anytime.</h3>
-                        <h4>Ready to watch? Enter your email to create or restart your membership.</h4>
+                        <p className='p1'>Unlimited movies, TV shows and more</p>
+                        <p className='p2'>Watch anywhere. Cancel anytime.</p>
+                        <p className='p3'>Ready to watch? Enter your email to create or restart your membership.</p>
                     </div>
-                    <div className="input">
-                        <Input type='email' />
-                    </div>
-                </section>
+                    <form className="form" onSubmit={(e) => e.preventDefault()}>
+                        <div className="mailInput">
+                            <input
+                                className='input'
+                                required
+                                type="email"
+                                placeholder="Enter your Email...."
+                            />
+                            <button>Get Started</button>
+                        </div>
+                    </form>
 
-            </ContentWrapper>
+                </ContentWrapper>
+            </section>
         </>
     )
 }

@@ -1,5 +1,14 @@
 @import "../../mixins.scss";
 
+.login-main {
+    background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)), url('./main-bg.jpg');
+    background-attachment: fixed;
+    padding-top: 110px;
+
+
+}
+
+
 .bg-img {
     position: relative;
     max-height: 120vh;
@@ -10,7 +19,8 @@
     overflow: hidden;
     background-repeat: no-repeat;
     box-shadow: 15px rgb(217, 11, 11);
-    opacity: 20%;
+    opacity: 0;
+
 }
 
 

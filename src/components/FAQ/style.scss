@@ -1,6 +1,10 @@
+@import "../../mixins.scss";
+
 .faq-main {
     // padding-top: 1rem;
     color: white;
+    background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)), url('./main-bg.jpg');
+    background-attachment: fixed;
 
     .img {
         position: absolute;
@@ -9,23 +13,54 @@
     }
 
     h1 {
-        font-size: 2rem;
+        font-size: 12px;
         text-align: center;
     }
 
     h3 {
         margin: 10px 0px;
+        font-size: 16px;
+    }
+
+    span {
+        font-size: 12px;
     }
 
     .faqs {
-        max-width: 79vw;
+
         padding: 23px;
-        line-height: 30px;
+
+        @include md {
+            max-width: 79vw;
+        }
+
         margin: auto;
 
         .faq {
+            text-align: justify;
             font-size: 25px;
             margin-bottom: 20px;
+        }
+    }
+
+    @include md {
+        h1 {
+            font-size: 2rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        span {
+            font-size: 22px;
+        }
+
+        color: rgb(255, 255, 255);
+        line-height: 30px;
+
+        h1 {
+            font-size: 2rem;
         }
     }
 }
