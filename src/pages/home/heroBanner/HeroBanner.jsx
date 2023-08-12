@@ -28,6 +28,7 @@ const HeroBanner = () => {
             navigate(`/search/${query}`);
         }
     };
+
     const handleSearch = () => {
         if (query.length > 0) {
             navigate(`/search/${query}`);

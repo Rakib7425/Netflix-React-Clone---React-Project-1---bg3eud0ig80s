@@ -50,7 +50,7 @@ const Login = () => {
                             <BsTwitter size={35} />
                         </div>
                     </div>
-                    <p>New to Netflix? <Link to={'signup'}>Sign up now</Link></p>
+                    <p>New to Netflix? <Link to={'/signup'}>Sign up now</Link></p>
                     <small>
                         This page is protected by Google reCAPTCHA to ensure you're not a bot.
                         <a href="#">Learn more.</a>
