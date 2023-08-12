@@ -1,7 +1,7 @@
-import { Input } from '@mui/material'
+import React from 'react'
 import ContentWrapper from '../../components/contentWrapper/ContentWrapper'
 import './style.scss'
-import React from 'react'
+import { IoIosArrowForward } from 'react-icons/io'
 
 const GetStarted = () => {
 
@@ -23,7 +23,7 @@ const GetStarted = () => {
                                 type="email"
                                 placeholder="Enter your Email...."
                             />
-                            <button>Get Started</button>
+                            <button className='btn'><span>Get Started</span> <span className='icon'><IoIosArrowForward size={30} color='white' /></span></button>
                         </div>
                     </form>
 

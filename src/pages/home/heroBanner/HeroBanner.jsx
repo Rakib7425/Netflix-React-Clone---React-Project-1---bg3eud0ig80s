@@ -7,6 +7,7 @@ import useFetch from "../../../hooks/useFetch";
 
 import Img from "../../../components/lazyLoadImage/Img";
 import ContentWrapper from "../../../components/contentWrapper/ContentWrapper";
+import { CiSearch } from "react-icons/ci";
 
 const HeroBanner = () => {
     const [background, setBackground] = useState("");
@@ -50,7 +51,7 @@ const HeroBanner = () => {
                             onChange={(e) => setQuery(e.target.value)}
                             onKeyUp={searchQueryHandler}
                         />
-                        <button>Search</button>
+                        <button className='btn'><span>Search</span> <span className='icon'><CiSearch size={25} color='white' /></span></button>
                     </div>
                 </div>
             </ContentWrapper>

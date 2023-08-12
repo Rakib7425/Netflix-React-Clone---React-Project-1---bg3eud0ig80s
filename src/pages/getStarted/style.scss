@@ -78,6 +78,17 @@
             }
         }
 
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .icon {
+                margin-top: 2px;
+
+            }
+        }
+
         button {
             width: 100px;
             height: 50px;
