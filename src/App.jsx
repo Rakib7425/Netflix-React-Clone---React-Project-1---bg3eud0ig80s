@@ -14,6 +14,7 @@ import Explore from "./pages/explore/Explore";
 import PageNotFound from "./pages/404/PageNotFound";
 import Login from "./pages/login/Login";
 import Mylist from "./pages/mylist/Mylist";
+import GetStarted from "./pages/getStarted/GetStarted";
 
 function App() {
     const dispatch = useDispatch();
@@ -63,6 +64,8 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/get-started" element={<GetStarted />} />
+
                 <Route path="/user/mylist" element={<Mylist />} />
 
                 <Route path="/:mediaType/:id" element={<Details />} />

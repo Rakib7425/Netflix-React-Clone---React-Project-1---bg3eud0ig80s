@@ -1,0 +1,41 @@
+@import "../../mixins.scss";
+
+.img {
+    opacity: 50%;
+    position: absolute;
+    max-width: 100%;
+}
+
+#get-started {
+    padding-top: 100px;
+    min-height: 700px;
+    position: relative;
+
+    color: white;
+
+    .get-started-main {
+        h1 {
+            font-size: 3rem;
+        }
+
+        h3 {
+            font-size: 2rem;
+        }
+
+        h4 {
+            font-size: 1.5rem;
+        }
+
+        min-height: screen;
+        display: flex;
+        gap: 30px;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+
+
+
+
+}
