@@ -1,0 +1,31 @@
+.faq-main {
+    // padding-top: 1rem;
+    color: white;
+
+    .img {
+        position: absolute;
+        opacity: 20%;
+        margin-bottom: 5rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    h3 {
+        margin: 10px 0px;
+    }
+
+    .faqs {
+        max-width: 79vw;
+        padding: 23px;
+        line-height: 30px;
+        margin: auto;
+
+        .faq {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+    }
+}

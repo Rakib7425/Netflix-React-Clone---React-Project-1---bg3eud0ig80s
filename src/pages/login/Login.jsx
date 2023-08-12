@@ -3,14 +3,12 @@ import './style.scss'
 import { FcGoogle } from 'react-icons/fc';
 import { ImGithub } from 'react-icons/im';
 import { BsTwitter } from 'react-icons/bs';
-import { FaTwitterSquare } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-
+import FAQ from '../../components/FAQ/FAQ';
 
 const Login = () => {
     return (
         <>
-            {/* <ContentWrapper> */}
             <section className='login-main'>
                 <div>
                     <h1>Welcome to Netflix</h1>
@@ -44,9 +42,9 @@ const Login = () => {
                         </div>
 
                         <div id="github">
-
                             <ImGithub color='white' size={35} />
                         </div>
+
                         <div id="twitter">
                             <BsTwitter size={35} />
                         </div>
@@ -58,6 +56,11 @@ const Login = () => {
                     </small>
                 </div>
             </section>
+
+            {/* <ContentWrapper> */}
+            <div className='faq'>
+                <FAQ />
+            </div>
             {/* </ContentWrapper> */}
         </>
     )
