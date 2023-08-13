@@ -49,6 +49,7 @@ const Signup = () => {
                                         InputLabelProps={{ sx: sxx() }}
                                     />
                                     <TextField id='password' label="Password" type='password' variant="standard" InputLabelProps={{ sx: sxx() }} />
+                                    <TextField id="filled-basic" label="Filled" variant="filled" style={{ backgroundColor: 'red' }} />
                                 </Stack>
                                 {/* <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                                     <AiOutlineMail size={30} color='white' />
