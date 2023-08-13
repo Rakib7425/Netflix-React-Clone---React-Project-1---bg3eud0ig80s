@@ -51,15 +51,15 @@ const Signup = () => {
                                 <button>Signup</button>
                             </form>
                             <div className="social-accounts">
-                                <div id="google">
+                                <div id="google-e">
                                     <FcGoogle size={35} />
                                 </div>
 
-                                <div id="github">
+                                <div id="github-b">
                                     <ImGithub color='white' size={35} />
                                 </div>
 
-                                <div id="twitter">
+                                <div id="twitter-r">
                                     <BsTwitter size={35} />
                                 </div>
                             </div>

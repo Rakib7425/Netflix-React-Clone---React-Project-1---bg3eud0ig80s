@@ -31,7 +31,7 @@
         background: rgba(0, 0, 0, 0.6);
         margin-bottom: 5rem;
 
-        margin-top: 3rem;
+        margin-top: -1rem;
 
         @include md {
             max-width: 50%;
@@ -41,8 +41,6 @@
         @include xl {
             max-width: 50%;
         }
-
-
 
         .para1 {
             color: white;
@@ -64,7 +62,7 @@
         #password,
         #confirm-password {
             color: white;
-            width: 17rem;
+            width: 18rem;
             background-color: rgba(7, 21, 14, 0.8);
         }
 
@@ -82,7 +80,71 @@
 }
 
 
-
 .social-accounts {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    // margin-bottom: 2rem;
     margin-bottom: 0;
+
+    #google-e {
+        cursor: pointer;
+
+        &:hover {
+            scale: 1.2;
+            animation-duration: 2s;
+
+            &::after {
+                content: 'Continue With Google';
+                position: absolute;
+                width: 222px;
+                top: 0;
+                left: -15px;
+                margin-top: -80px;
+                color: #ffffff;
+            }
+        }
+
+    }
+
+    #github-b {
+        cursor: pointer;
+
+        &:hover {
+            scale: 1.2;
+            animation-duration: 2s;
+
+            &::after {
+                content: 'Continue With GitHub';
+                position: absolute;
+                width: 222px;
+                top: 0;
+                left: -62px;
+                margin-top: -80px;
+                color: #ffffff;
+            }
+        }
+    }
+
+    #twitter-r {
+        cursor: pointer;
+        color: #0071eb;
+
+        &:hover {
+            scale: 1.2;
+            animation-duration: 2s;
+
+            &::after {
+                content: 'Continue With Twitter';
+                position: absolute;
+                width: 222px;
+                top: 0;
+                left: -105px;
+                // z-index: 90;
+                margin-top: -80px;
+                color: #ffffff;
+            }
+        }
+    }
 }
