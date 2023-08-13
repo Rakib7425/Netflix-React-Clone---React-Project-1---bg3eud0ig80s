@@ -61,10 +61,11 @@
         }
 
         #email,
-        #password {
+        #password,
+        #confirm-password {
             color: white;
             width: 17rem;
-            color: aliceblue;
+            background-color: rgba(7, 21, 14, 0.8);
         }
 
         .para4 {

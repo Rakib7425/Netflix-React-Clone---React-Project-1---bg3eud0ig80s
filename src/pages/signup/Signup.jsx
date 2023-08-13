@@ -1,12 +1,11 @@
 import React from 'react'
 import "./style.scss";
 import ContentWrapper from '../../components/contentWrapper/ContentWrapper';
-import { Box, Stack, TextField } from '@mui/material';
+import { Stack, TextField } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { ImGithub } from 'react-icons/im';
 import { FcGoogle } from 'react-icons/fc';
 import { BsTwitter } from 'react-icons/bs';
-import { AiOutlineMail } from 'react-icons/ai';
 import { inputLabelClasses } from "@mui/material/InputLabel";
 
 const Signup = () => {
@@ -45,16 +44,10 @@ const Signup = () => {
 
                             <form onSubmit={e => e.preventDefault()}>
                                 <Stack spacing={3}>
-                                    <TextField id='email' label="Email" type='email' variant="standard"
-                                        InputLabelProps={{ sx: sxx() }}
-                                    />
-                                    <TextField id='password' label="Password" type='password' variant="standard" InputLabelProps={{ sx: sxx() }} />
-                                    <TextField id="filled-basic" label="Filled" variant="filled" style={{ backgroundColor: 'red' }} />
+                                    <TextField id="email" type='email' label="Email" variant="filled" InputLabelProps={{ sx: sxx() }} />
+                                    <TextField id="password" type='password' label="Password" variant="filled" InputLabelProps={{ sx: sxx() }} />
+                                    <TextField id="confirm-password" type='password' label="Confirm Password" variant="filled" InputLabelProps={{ sx: sxx() }} />
                                 </Stack>
-                                {/* <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                                    <AiOutlineMail size={30} color='white' />
-                                    <TextField id="input-with-sx" label="Email" variant="standard" />
-                                </Box> */}
                                 <button>Signup</button>
                             </form>
                             <div className="social-accounts">

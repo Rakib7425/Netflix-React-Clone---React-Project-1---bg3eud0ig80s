@@ -164,7 +164,7 @@ form .form-help :where(label, a) {
             animation-duration: 2s;
 
             &::after {
-                content: 'Login With Google';
+                content: 'Continue With Google';
                 position: absolute;
                 width: 222px;
                 top: 0;
@@ -185,7 +185,7 @@ form .form-help :where(label, a) {
             animation-duration: 2s;
 
             &::after {
-                content: 'Login With GitHub';
+                content: 'Continue With GitHub';
                 position: absolute;
                 width: 222px;
                 top: 0;
@@ -206,7 +206,7 @@ form .form-help :where(label, a) {
             animation-duration: 2s;
 
             &::after {
-                content: 'Login With Twitter';
+                content: 'Continue With Twitter';
                 position: absolute;
                 width: 222px;
                 top: 0;
