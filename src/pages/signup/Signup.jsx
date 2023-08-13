@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./style.scss";
 import ContentWrapper from '../../components/contentWrapper/ContentWrapper';
 import { Stack, TextField } from '@mui/material';
@@ -7,9 +7,46 @@ import { ImGithub } from 'react-icons/im';
 import { FcGoogle } from 'react-icons/fc';
 import { BsTwitter } from 'react-icons/bs';
 import { inputLabelClasses } from "@mui/material/InputLabel";
+import axios from "axios";
 
 const Signup = () => {
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [cPassword, setCPassword] = useState('');
+    const projectId = import.meta.env.VITE_APP_PROJECT_ID;
 
+    const [user, setUser] = useState([]);
+
+    let headersList = {
+        "projectId": projectId,
+        "Content-Type": "application/json"
+    }
+
+    let bodyContent = JSON.stringify({
+        "name": name,
+        "email": email,
+        "password": password
+    });
+
+    let reqOptions = {
+        url: "https://academics.newtonschool.co/api/v1/user/signup",
+        method: "POST",
+        headers: headersList,
+        data: bodyContent,
+    }
+
+    const signup = async () => {
+        let response = await axios.request(reqOptions);
+        if (response) {
+            setUser(response);
+            console.log(response.data);
+        }
+    }
+
+    const handleSignup = () => {
+        signup();
+    }
     const sxx = () => {
         return {
             // set the color of the label when not shrinked
@@ -21,7 +58,7 @@ const Signup = () => {
             }
         }
     }
-
+    console.log(user.config);
     return (
         <>
             <section className="signup">
@@ -44,11 +81,27 @@ const Signup = () => {
 
                             <form onSubmit={e => e.preventDefault()}>
                                 <Stack spacing={3}>
-                                    <TextField id="email" type='email' label="Email" variant="filled" InputLabelProps={{ sx: sxx() }} />
-                                    <TextField id="password" type='password' label="Password" variant="filled" InputLabelProps={{ sx: sxx() }} />
-                                    <TextField id="confirm-password" type='password' label="Confirm Password" variant="filled" InputLabelProps={{ sx: sxx() }} />
+                                    <TextField id="name" type='text' label="Full Name" variant="filled" InputLabelProps={{ sx: sxx() }}
+                                        value={name}
+                                        onChange={(e) => setName(e.target.value)}
+                                    />
+                                    <TextField id="email" type='email' label="Email" variant="filled" InputLabelProps={{ sx: sxx() }}
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                    />
+                                    <TextField id="password" type='password' label="Password" variant="filled" InputLabelProps={{ sx: sxx() }}
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
+
+                                    />
+                                    <TextField id="confirm-password" type='password' label="Confirm Password" variant="filled" InputLabelProps={{ sx: sxx() }}
+                                        value={cPassword}
+
+                                        onChange={(e) => setCPassword(e.target.value)}
+
+                                    />
                                 </Stack>
-                                <button>Signup</button>
+                                <button onClick={handleSignup}>Signup</button>
                             </form>
                             <div className="social-accounts">
                                 <div id="google-e">

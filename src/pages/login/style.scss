@@ -31,6 +31,16 @@
     width: 450px;
     transform: translate(-50%, -50%);
     background: rgba(0, 0, 0, .75);
+
+    .new {
+        color: white;
+    }
+
+    .go-signup {
+        font-weight: bold;
+        color: rgb(5, 209, 121);
+        margin-left: .7rem;
+    }
 }
 
 .form-wrapper h2 {

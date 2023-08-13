@@ -5,9 +5,39 @@ import { ImGithub } from 'react-icons/im';
 import { BsTwitter } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import FAQ from '../../components/FAQ/FAQ';
-import ContentWrapper from '../../components/contentWrapper/ContentWrapper';
+// import ContentWrapper from '../../components/contentWrapper/ContentWrapper';
+import { useState } from 'react';
+import axios from "axios";
 
 const Login = () => {
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    let headersList = {
+        "Accept": "*/*",
+        "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+        "projectId": "bg3eud0ig80s",
+        "Content-Type": "application/json"
+    }
+
+    let bodyContent = JSON.stringify({
+        "email": email,
+        "password": password
+    });
+
+    let reqOptions = {
+        url: "https://academics.newtonschool.co/api/v1/user/login",
+        method: "POST",
+        headers: headersList,
+        data: bodyContent,
+    }
+
+    const login = async () => {
+        let response = await axios.request(reqOptions);
+        console.log(response.data);
+    }
+
     return (
         <>
             <section className='login-main'>
@@ -17,21 +47,29 @@ const Login = () => {
                 <div className="bg-img">
                     <img src={'./login-bg.jpg'} alt="" />
                 </div>
-                <div class="form-wrapper">
+                <div className="form-wrapper">
                     <h2>Sign In</h2>
                     <form onSubmit={(e) => { e.preventDefault() }}>
-                        <div class="form-control">
-                            <input type="email" required />
+                        <div className="form-control">
+                            <input type="email" required
+                                value={email}
+                                onChange={e => setEmail(e.target.value)}
+                            />
                             <label>Email or phone number</label>
                         </div>
-                        <div class="form-control">
-                            <input type="password" required />
+                        <div className="form-control">
+                            <input type="password" required
+                                value={password}
+                                onChange={e => setPassword(e.target.value)}
+                            />
                             <label>Password</label>
                         </div>
                         <button type="submit">Sign In</button>
-                        <div class="form-help">
-                            <div class="remember-me">
-                                <input type="checkbox" defaultChecked id="remember-me" />
+                        <div className="form-help">
+                            <div className="remember-me">
+                                <input type="checkbox" defaultChecked id="remember-me"
+                                // onChange={e=>setEmail(e.target.value)}
+                                />
                                 <label htmlFor="remember-me">Remember me</label>
                             </div>
                             <a href="#">Need help?</a>
@@ -50,7 +88,7 @@ const Login = () => {
                             <BsTwitter size={35} />
                         </div>
                     </div>
-                    <p className='new'>New to Netflix? <Link to={'/signup'}>Sign up now</Link></p>
+                    <p className='new'>New to Netflix? <Link className='go-signup' to={'/signup'}>Sign up now</Link></p>
                     <small>
                         This page is protected by Google reCAPTCHA to ensure you're not a bot.
                         <a href="#">Learn more.</a>
