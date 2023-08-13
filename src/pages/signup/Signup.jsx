@@ -10,6 +10,19 @@ import { AiOutlineMail } from 'react-icons/ai';
 import { inputLabelClasses } from "@mui/material/InputLabel";
 
 const Signup = () => {
+
+    const sxx = () => {
+        return {
+            // set the color of the label when not shrinked
+            color: "red",
+            border: 'green',
+            [`&.${inputLabelClasses.shrink}`]: {
+                // set the color of the label when shrinked (usually when the TextField is focused)
+                color: "orange",
+            }
+        }
+    }
+
     return (
         <>
             <section className="signup">
@@ -33,19 +46,9 @@ const Signup = () => {
                             <form onSubmit={e => e.preventDefault()}>
                                 <Stack spacing={3}>
                                     <TextField id='email' label="Email" type='email' variant="standard"
-                                        InputLabelProps={{
-                                            sx: {
-                                                // set the color of the label when not shrinked
-                                                color: "red",
-                                                border: 'green'
-                                                [`&.${inputLabelClasses.shrink}`]: {
-                                        // set the color of the label when shrinked (usually when the TextField is focused)
-                                        color: "orange"
-                                                }
-                                            }
-                                        }}
+                                        InputLabelProps={{ sx: sxx() }}
                                     />
-                                    <TextField id='password' label="Password" type='password' variant="standard" color="success" />
+                                    <TextField id='password' label="Password" type='password' variant="standard" InputLabelProps={{ sx: sxx() }} />
                                 </Stack>
                                 {/* <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                                     <AiOutlineMail size={30} color='white' />
