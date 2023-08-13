@@ -15,7 +15,6 @@ const Signup = () => {
     const [password, setPassword] = useState('');
     const [cPassword, setCPassword] = useState('');
     const projectId = import.meta.env.VITE_APP_PROJECT_ID;
-
     const [user, setUser] = useState([]);
 
     let headersList = {
