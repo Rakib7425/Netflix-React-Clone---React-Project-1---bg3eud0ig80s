@@ -10,14 +10,12 @@ import { useState } from 'react';
 import axios from "axios";
 
 const Login = () => {
-
+    const projectId = import.meta.env.VITE_APP_PROJECT_ID;
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
+    const [user, setUser] = useState([]);
     let headersList = {
-        "Accept": "*/*",
-        "User-Agent": "Thunder Client (https://www.thunderclient.com)",
-        "projectId": "bg3eud0ig80s",
+        "projectId": projectId,
         "Content-Type": "application/json"
     }
 
@@ -35,7 +33,14 @@ const Login = () => {
 
     const login = async () => {
         let response = await axios.request(reqOptions);
-        console.log(response.data);
+        if (response) {
+            console.log(response.data);
+            setUser(response);
+        }
+
+    }
+    const handleSignIn = () => {
+        login();
     }
 
     return (
@@ -64,15 +69,15 @@ const Login = () => {
                             />
                             <label>Password</label>
                         </div>
-                        <button type="submit">Sign In</button>
+                        <button type="submit" onClick={handleSignIn}>Sign In</button>
                         <div className="form-help">
                             <div className="remember-me">
                                 <input type="checkbox" defaultChecked id="remember-me"
-                                // onChange={e=>setEmail(e.target.value)}
+                                // onChange={e=>setChecked(e.target.value)}
                                 />
                                 <label htmlFor="remember-me">Remember me</label>
                             </div>
-                            <a href="#">Need help?</a>
+                            <Link>Need help?</Link>
                         </div>
                     </form>
                     <div className="social-accounts">
