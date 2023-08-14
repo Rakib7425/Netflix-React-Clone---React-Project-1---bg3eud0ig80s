@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './style.scss'
 import { FcGoogle } from 'react-icons/fc';
 import { ImGithub } from 'react-icons/im';
@@ -19,9 +19,14 @@ const Login = () => {
     const projectId = import.meta.env.VITE_APP_PROJECT_ID;
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [user, setUser] = useState([]);
+    const [user, setUser] = useState({});
 
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        // set user details
+        dispatch(getUser(user));
+    }, [user])
 
     let headersList = {
         "projectId": projectId,
@@ -45,9 +50,6 @@ const Login = () => {
         if (response) {
             console.log(response);
             setUser(response);
-
-            // set user details
-            dispatch(getUser(user));
         }
 
     }
