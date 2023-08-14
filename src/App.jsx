@@ -64,7 +64,8 @@ function App() {
     return (
         <main>
             <Header />
-            <ToastContainer theme="dark" />
+            <ToastContainer theme="dark" position="top-right"
+                autoClose={2000} />
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />

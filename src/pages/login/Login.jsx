@@ -5,12 +5,12 @@ import { ImGithub } from 'react-icons/im';
 import { BsTwitter } from 'react-icons/bs';
 import { Link, useNavigate } from 'react-router-dom';
 import FAQ from '../../components/FAQ/FAQ';
+import Spinner from '../../components/spinner/Spinner'
 
 import { useState } from 'react';
 import axios from "axios";
 import { Stack, TextField } from '@mui/material';
 import { inputLabelClasses } from "@mui/material/InputLabel";
-
 import { getUser } from '../../store/userSlice'
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
@@ -21,6 +21,7 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [userData, setUserData] = useState({});
+    const [loading, setLoading] = useState(false);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -50,20 +51,26 @@ const Login = () => {
 
     const login = async () => {
         try {
+            setLoading(true);
             let response = await axios.request(reqOptions);
             if (response.status === 200) {
+
                 console.log(response);
                 setUserData(response);
-                toast.success('🦄 Successfully logged in!', {
-                    position: "top-right",
-                    autoClose: 4000,
+                toast.success('🦄 Successfully logged in!');
 
-                });
-                navigate('/');
+                setTimeout(() => {
+                    setLoading(false);
+                    navigate('/');
+                }, 200)
+
+
             }
         } catch (error) {
-            console.error(error);
-
+            setLoading(false);
+            const errMsg = error?.response?.data?.message;
+            console.error(error, errMsg);
+            toast.error(errMsg);
         }
 
 
@@ -82,7 +89,7 @@ const Login = () => {
             }
         }
     }
-    return (
+    return loading ? <div className="loader"><Spinner /></div> : (
         <>
             <section className='login-main'>
                 {/* <ContentWrapper>

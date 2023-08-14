@@ -6,6 +6,15 @@
     min-height: fit-content;
 }
 
+.loader {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)), url('../../assets/main-bg.jpg');
+    background-attachment: fixed;
+}
 
 .bg-img {
     // position: relative;
