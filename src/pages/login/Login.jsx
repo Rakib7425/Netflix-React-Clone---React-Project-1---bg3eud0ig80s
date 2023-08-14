@@ -3,7 +3,7 @@ import './style.scss'
 import { FcGoogle } from 'react-icons/fc';
 import { ImGithub } from 'react-icons/im';
 import { BsTwitter } from 'react-icons/bs';
-import { Link } from 'react-router-dom';
+import { Link, useRevalidator } from 'react-router-dom';
 import FAQ from '../../components/FAQ/FAQ';
 
 import { useState } from 'react';
@@ -47,10 +47,6 @@ const Login = () => {
             setUser(response);
 
             // set user details
-            /* `dispatch(getUser);` is dispatching an action to the Redux store. In this case, it is
-            dispatching the `getUser` action, which is likely defined in the `userSlice` file.
-            Dispatching an action triggers the corresponding reducer function in the Redux store,
-            which updates the state based on the action. */
             dispatch(getUser(user));
         }
 
