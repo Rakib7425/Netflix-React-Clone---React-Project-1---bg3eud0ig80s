@@ -78,7 +78,7 @@ const Header = () => {
         setMobileMenu(false);
     };
 
-    console.log(userDetails);
+    // console.log(userDetails);
     const logout = () => {
         try {
             // console.log('logging out....');

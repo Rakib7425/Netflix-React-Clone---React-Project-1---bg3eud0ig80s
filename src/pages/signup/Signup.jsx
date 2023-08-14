@@ -8,6 +8,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { BsTwitter } from 'react-icons/bs';
 import { inputLabelClasses } from "@mui/material/InputLabel";
 import axios from "axios";
+import { toast } from 'react-toastify';
 
 const Signup = () => {
     const [name, setName] = useState('');
@@ -36,15 +37,30 @@ const Signup = () => {
     }
 
     const signup = async () => {
-        let response = await axios.request(reqOptions);
-        if (response) {
-            setUser(response);
-            console.log(response.data);
+        try {
+            let response = await axios.request(reqOptions);
+            if (response) {
+                setUser(response);
+                console.log(response);
+                toast.success('Account has been created successfully!');
+                setName('');
+                setEmail('');
+                setPassword('');
+                setCPassword('');
+            }
+
+        } catch (error) {
+            console.error(error);
+            toast.error('EmailId already registered!');
+
         }
+
     }
 
     const handleSignup = () => {
-        signup();
+        if (password && name && password && cPassword) {
+            signup();
+        }
     }
     const sxx = () => {
         return {
@@ -81,21 +97,24 @@ const Signup = () => {
                             <form onSubmit={e => e.preventDefault()}>
                                 <Stack spacing={3}>
                                     <TextField id="name" type='text' label="Full Name" variant="filled" InputLabelProps={{ sx: sxx() }}
+                                        required
                                         value={name}
                                         onChange={(e) => setName(e.target.value)}
                                     />
                                     <TextField id="email" type='email' label="Email" variant="filled" InputLabelProps={{ sx: sxx() }}
+                                        required
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
                                     />
                                     <TextField id="password" type='password' label="Password" variant="filled" InputLabelProps={{ sx: sxx() }}
+                                        required
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
 
                                     />
                                     <TextField id="confirm-password" type='password' label="Confirm Password" variant="filled" InputLabelProps={{ sx: sxx() }}
+                                        required
                                         value={cPassword}
-
                                         onChange={(e) => setCPassword(e.target.value)}
 
                                     />
