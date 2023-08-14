@@ -74,6 +74,10 @@
                 font-weight: bold;
                 color: rgb(5, 209, 121);
                 margin-left: .7rem;
+
+                &:hover {
+                    color: blue;
+                }
             }
         }
 

@@ -23,7 +23,7 @@ const FAQ = () => {
                     <h3>Q. Where can i watch?</h3>
                     <span>A. Watch anywhere, anytime. Sign in with your Netflix account to watch instantly on the web at netflix.com from your personal computer or on any internet-connected device that offers the Netflix app, including smart TVs, smartphones, tablets, streaming media players and game consoles.
 
-                        You can also download your favourite shows with the iOS, Android, or Windows 10 app. Use downloads to watch while you're on the go and without an internet connection. Take Netflix with you anywhere. </span>
+                        You can also download your favorites shows with the iOS, Android, or Windows 10 app. Use downloads to watch while you're on the go and without an internet connection. Take Netflix with you anywhere. </span>
                 </div>
                 <hr />
                 <div className='faq'>

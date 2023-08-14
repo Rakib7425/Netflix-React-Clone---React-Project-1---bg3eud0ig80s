@@ -8,6 +8,8 @@ import FAQ from '../../components/FAQ/FAQ';
 // import ContentWrapper from '../../components/contentWrapper/ContentWrapper';
 import { useState } from 'react';
 import axios from "axios";
+import { Stack, TextField } from '@mui/material';
+import { inputLabelClasses } from "@mui/material/InputLabel";
 
 const Login = () => {
     const projectId = import.meta.env.VITE_APP_PROJECT_ID;
@@ -43,6 +45,16 @@ const Login = () => {
         login();
     }
 
+    const sxx = () => {
+        return {
+            // set the color of the label when not shrinked
+            color: "red",
+            [`&.${inputLabelClasses.shrink}`]: {
+                // set the color of the label when shrinked (usually when the TextField is focused)
+                color: "orange",
+            }
+        }
+    }
     return (
         <>
             <section className='login-main'>
@@ -56,18 +68,30 @@ const Login = () => {
                     <h2>Sign In</h2>
                     <form onSubmit={(e) => { e.preventDefault() }}>
                         <div className="form-control">
-                            <input type="email" required
+                            <Stack spacing={3}>
+                                <TextField id="email" type='email' label="Email" variant="filled"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    InputLabelProps={{ sx: sxx() }}
+                                />
+                                <TextField id="password" type='password' label="Password" variant="filled"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    InputLabelProps={{ sx: sxx() }}
+                                />
+                            </Stack>
+                            {/* <input type="email" required
                                 value={email}
                                 onChange={e => setEmail(e.target.value)}
                             />
-                            <label>Email or phone number</label>
+                            <label>Email or phone number</label> */}
                         </div>
                         <div className="form-control">
-                            <input type="password" required
+                            {/* <input type="password" required
                                 value={password}
                                 onChange={e => setPassword(e.target.value)}
                             />
-                            <label>Password</label>
+                            <label>Password</label> */}
                         </div>
                         <button type="submit" onClick={handleSignIn}>Sign In</button>
                         <div className="form-help">
@@ -80,7 +104,7 @@ const Login = () => {
                             <Link>Need help?</Link>
                         </div>
                     </form>
-                    <div className="social-accounts">
+                    <div className="social-accounts m">
                         <div id="google">
                             <FcGoogle size={35} />
                         </div>
@@ -94,10 +118,10 @@ const Login = () => {
                         </div>
                     </div>
                     <p className='new'>New to Netflix? <Link className='go-signup' to={'/signup'}>Sign up now</Link></p>
-                    <small>
+                    {/* <small>
                         This page is protected by Google reCAPTCHA to ensure you're not a bot.
                         <a href="#">Learn more.</a>
-                    </small>
+                    </small> */}
                 </div>
             </section>
 
