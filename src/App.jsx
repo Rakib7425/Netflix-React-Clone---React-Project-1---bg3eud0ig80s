@@ -16,6 +16,8 @@ import Login from "./pages/login/Login";
 import Mylist from "./pages/mylist/Mylist";
 import GetStarted from "./pages/getStarted/GetStarted";
 import Signup from "./pages/signup/Signup";
+import { ToastContainer } from 'react-toastify';
+import "react-toastify/ReactToastify.min.css";
 
 function App() {
     const dispatch = useDispatch();
@@ -62,6 +64,7 @@ function App() {
     return (
         <main>
             <Header />
+            <ToastContainer theme="dark" />
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />

@@ -13,6 +13,7 @@ import { inputLabelClasses } from "@mui/material/InputLabel";
 
 import { getUser } from '../../store/userSlice'
 import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 
 
 const Login = () => {
@@ -50,12 +51,23 @@ const Login = () => {
     }
 
     const login = async () => {
-        let response = await axios.request(reqOptions);
-        if (response) {
-            console.log(response);
-            setUserData(response);
-            navigate('/');
+        try {
+            let response = await axios.request(reqOptions);
+            if (response.status === 200) {
+                console.log(response);
+                setUserData(response);
+                toast.success('🦄 Successfully logged in!', {
+                    position: "top-right",
+                    autoClose: 4000,
+
+                });
+                navigate('/');
+            }
+        } catch (error) {
+            console.error(error);
+
         }
+
 
     }
     const handleSignIn = () => {
