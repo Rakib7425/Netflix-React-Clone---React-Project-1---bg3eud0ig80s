@@ -9,7 +9,9 @@ import "./style.scss";
 import ContentWrapper from "../contentWrapper/ContentWrapper";
 import logo from "../../assets/logo.svg";
 
-// import Button from '@mui/material/Button';
+import { useDispatch, useSelector } from "react-redux";
+import { getUser } from "../../store/userSlice";
+
 
 const Header = () => {
     const [show, setShow] = useState("top");
@@ -19,7 +21,8 @@ const Header = () => {
     const [showSearch, setShowSearch] = useState("");
     const navigate = useNavigate();
     const location = useLocation();
-
+    const { userDetails } = useSelector((state) => state?.user);
+    const dispatch = useDispatch();
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [location]);
@@ -73,7 +76,17 @@ const Header = () => {
         }
         setMobileMenu(false);
     };
+    // useEffect(() => {
+    //     // set user details to null
+    //     dispatch(getUser(null));
 
+    // }, [userDetails]);
+
+    console.log(userDetails);
+    const logout = () => {
+        console.log('logging out....');
+        dispatch(getUser(null));
+    }
     return (
         <header className={`header ${mobileMenu ? "mobileView" : ""} ${show}`}>
             <ContentWrapper>
@@ -101,9 +114,13 @@ const Header = () => {
                         <HiOutlineSearch onClick={openSearch} />
                     </li>
                     <li className="menuItem">
-                        <Link to={'/login'} >
-                            <button className="login-btn">Sign In</button>
-                        </Link>
+                        {!userDetails?.data ?
+                            <Link to={'/login'} >
+                                <button className="login-btn">Sign In</button>
+                            </Link> : <Link onClick={logout}>
+                                <button className="login-btn">Logout</button>
+                            </Link>
+                        }
                     </li>
                 </ul>
 

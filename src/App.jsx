@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import { fetchDataFromApi } from "./utils/api";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -21,13 +21,18 @@ import "react-toastify/ReactToastify.min.css";
 
 function App() {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const { url } = useSelector((state) => state.home);
     console.log(url);
-
+    const { userDetails } = useSelector((state) => state?.user);
     useEffect(() => {
-        fetchApiConfig();
-        genresCall();
-    }, []);
+        if (userDetails) {
+            fetchApiConfig();
+            genresCall();
+        } else {
+            navigate('/login')
+        }
+    }, [userDetails]);
 
     const fetchApiConfig = () => {
         fetchDataFromApi("/configuration").then((res) => {

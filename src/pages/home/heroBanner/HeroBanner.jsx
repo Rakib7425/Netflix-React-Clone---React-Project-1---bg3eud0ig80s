@@ -10,7 +10,6 @@ import ContentWrapper from "../../../components/contentWrapper/ContentWrapper";
 import { CiSearch } from "react-icons/ci";
 
 import { useSelector } from "react-redux";
-import { getUser } from "../../../store/userSlice";
 
 const HeroBanner = () => {
     const [background, setBackground] = useState("");
