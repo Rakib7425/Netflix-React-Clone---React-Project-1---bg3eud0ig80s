@@ -13,7 +13,7 @@ import Img from "../../../components/lazyLoadImage/Img.jsx";
 import PosterFallback from "../../../assets/no-poster.png";
 import { PlayIcon } from "../Playbtn";
 import VideoPopup from "../../../components/videoPopup/VideoPopup";
-
+import { MdOutlinePlaylistAdd, MdOutlinePlaylistAddCheck } from 'react-icons/md'
 const DetailsBanner = ({ video, crew }) => {
     const [show, setShow] = useState(false);
     const [videoId, setVideoId] = useState(null);
@@ -34,6 +34,9 @@ const DetailsBanner = ({ video, crew }) => {
         const hours = Math.floor(totalMinutes / 60);
         const minutes = totalMinutes % 60;
         return `${hours}h${minutes > 0 ? ` ${minutes}m` : ""}`;
+    };
+    const handleAddToWatchList = () => {
+        console.log('This functionality is pending to done');
     };
 
     return (
@@ -66,11 +69,10 @@ const DetailsBanner = ({ video, crew }) => {
                                     </div>
                                     <div className="right">
                                         <div className="title">
-                                            {`${
-                                                data.name || data.title
-                                            } (${dayjs(
-                                                data?.release_date
-                                            ).format("YYYY")})`}
+                                            {`${data.name || data.title
+                                                } (${dayjs(
+                                                    data?.release_date
+                                                ).format("YYYY")})`}
                                         </div>
                                         <div className="subtitle">
                                             {data.tagline}
@@ -96,6 +98,15 @@ const DetailsBanner = ({ video, crew }) => {
                                                     Watch Trailer
                                                 </span>
                                             </div>
+
+                                            <div className="addToWatchlist" onClick={handleAddToWatchList}>
+                                                <MdOutlinePlaylistAdd className="unchecked" />
+                                                <MdOutlinePlaylistAddCheck className="checked" />
+                                                <span className="text">
+                                                    Add To Watchlist
+                                                </span>
+                                            </div>
+
                                         </div>
 
                                         <div className="overview">
@@ -111,7 +122,7 @@ const DetailsBanner = ({ video, crew }) => {
                                             {data.status && (
                                                 <div className="infoItem">
                                                     <span className="text bold">
-                                                        Status:{" "}
+                                                        Status:
                                                     </span>
                                                     <span className="text">
                                                         {data.status}
@@ -121,7 +132,7 @@ const DetailsBanner = ({ video, crew }) => {
                                             {data.release_date && (
                                                 <div className="infoItem">
                                                     <span className="text bold">
-                                                        Release Date:{" "}
+                                                        Release Date:
                                                     </span>
                                                     <span className="text">
                                                         {dayjs(
@@ -133,7 +144,7 @@ const DetailsBanner = ({ video, crew }) => {
                                             {data.runtime && (
                                                 <div className="infoItem">
                                                     <span className="text bold">
-                                                        Runtime:{" "}
+                                                        Runtime:
                                                     </span>
                                                     <span className="text">
                                                         {toHoursAndMinutes(
@@ -147,7 +158,7 @@ const DetailsBanner = ({ video, crew }) => {
                                         {director?.length > 0 && (
                                             <div className="info">
                                                 <span className="text bold">
-                                                    Director:{" "}
+                                                    Director:
                                                 </span>
                                                 <span className="text">
                                                     {director?.map((d, i) => (
@@ -165,7 +176,7 @@ const DetailsBanner = ({ video, crew }) => {
                                         {writer?.length > 0 && (
                                             <div className="info">
                                                 <span className="text bold">
-                                                    Writer:{" "}
+                                                    Writer:
                                                 </span>
                                                 <span className="text">
                                                     {writer?.map((d, i) => (
@@ -183,7 +194,7 @@ const DetailsBanner = ({ video, crew }) => {
                                         {data?.created_by?.length > 0 && (
                                             <div className="info">
                                                 <span className="text bold">
-                                                    Creator:{" "}
+                                                    Creator:
                                                 </span>
                                                 <span className="text">
                                                     {data?.created_by?.map(

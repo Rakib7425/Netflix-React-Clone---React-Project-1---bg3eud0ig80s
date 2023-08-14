@@ -70,7 +70,7 @@ const Login = () => {
             setLoading(false);
             const errMsg = error?.response?.data?.message;
             console.error(error, errMsg);
-            toast.error(errMsg);
+            toast.error(`${errMsg}`);
         }
 
 
