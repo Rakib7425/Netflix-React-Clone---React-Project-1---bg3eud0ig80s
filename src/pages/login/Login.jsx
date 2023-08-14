@@ -27,16 +27,14 @@ const Login = () => {
 
     useEffect(() => {
         // set user details
-        // const headers = userData.headers;
-        // console.log(headers);
         dispatch(getUser(userData));
 
-    }, [userData])
+    }, [userData]);
 
     let headersList = {
         "projectId": projectId,
         "Content-Type": "application/json"
-    }
+    };
 
     let bodyContent = JSON.stringify({
         "email": email,
@@ -48,7 +46,7 @@ const Login = () => {
         method: "POST",
         headers: headersList,
         data: bodyContent,
-    }
+    };
 
     const login = async () => {
         try {
