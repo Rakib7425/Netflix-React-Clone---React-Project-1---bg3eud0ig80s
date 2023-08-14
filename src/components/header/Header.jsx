@@ -110,13 +110,11 @@ const Header = () => {
                     >
                         TV Shows
                     </li>
-
-                    <li className="menuItem" onClick={() => navigationHandler("mylist")}>
-                        {
-                            userDetails?.data ? <span>My List</span> : ''
-                        }
-                    </li>
-
+                    {userDetails?.data ?
+                        <li className="menuItem" onClick={() => navigationHandler("mylist")}>
+                            <span>My List</span>
+                        </li> : ''
+                    }
                     <li className="menuItem">
                         <HiOutlineSearch onClick={openSearch} />
                     </li>
