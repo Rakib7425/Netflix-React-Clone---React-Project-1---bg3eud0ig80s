@@ -5,17 +5,24 @@ import { ImGithub } from 'react-icons/im';
 import { BsTwitter } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import FAQ from '../../components/FAQ/FAQ';
-// import ContentWrapper from '../../components/contentWrapper/ContentWrapper';
+
 import { useState } from 'react';
 import axios from "axios";
 import { Stack, TextField } from '@mui/material';
 import { inputLabelClasses } from "@mui/material/InputLabel";
+
+import { getUser } from '../../store/userSlice'
+import { useDispatch } from 'react-redux';
+
 
 const Login = () => {
     const projectId = import.meta.env.VITE_APP_PROJECT_ID;
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [user, setUser] = useState([]);
+
+    const dispatch = useDispatch();
+
     let headersList = {
         "projectId": projectId,
         "Content-Type": "application/json"
@@ -36,8 +43,15 @@ const Login = () => {
     const login = async () => {
         let response = await axios.request(reqOptions);
         if (response) {
-            console.log(response.data);
+            console.log(response);
             setUser(response);
+
+            // set user details
+            /* `dispatch(getUser);` is dispatching an action to the Redux store. In this case, it is
+            dispatching the `getUser` action, which is likely defined in the `userSlice` file.
+            Dispatching an action triggers the corresponding reducer function in the Redux store,
+            which updates the state based on the action. */
+            dispatch(getUser(user));
         }
 
     }
