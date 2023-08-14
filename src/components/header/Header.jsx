@@ -11,6 +11,7 @@ import logo from "../../assets/logo.svg";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../../store/userSlice";
+import { toast } from "react-toastify";
 
 
 const Header = () => {
@@ -76,16 +77,18 @@ const Header = () => {
         }
         setMobileMenu(false);
     };
-    // useEffect(() => {
-    //     // set user details to null
-    //     dispatch(getUser(null));
-
-    // }, [userDetails]);
 
     console.log(userDetails);
     const logout = () => {
-        console.log('logging out....');
-        dispatch(getUser(null));
+        try {
+            // console.log('logging out....');
+            dispatch(getUser(null));
+            toast.success('Successfully logged out!');
+        } catch (error) {
+            console.error(error);
+            toast.error('Something goes very wrong');
+        }
+
     }
     return (
         <header className={`header ${mobileMenu ? "mobileView" : ""} ${show}`}>
@@ -107,9 +110,13 @@ const Header = () => {
                     >
                         TV Shows
                     </li>
+
                     <li className="menuItem" onClick={() => navigationHandler("mylist")}>
-                        <span>My List</span>
+                        {
+                            userDetails?.data ? <span>My List</span> : ''
+                        }
                     </li>
+
                     <li className="menuItem">
                         <HiOutlineSearch onClick={openSearch} />
                     </li>
@@ -133,24 +140,26 @@ const Header = () => {
                     )}
                 </div>
             </ContentWrapper>
-            {showSearch && (
-                <div className="searchBar">
-                    <ContentWrapper>
-                        <div className="searchInput">
-                            <input
-                                type="text"
-                                placeholder="Search for a movie or tv show...."
-                                onChange={(e) => setQuery(e.target.value)}
-                                onKeyUp={searchQueryHandler}
-                            />
-                            <VscChromeClose
-                                onClick={() => setShowSearch(false)}
-                            />
-                        </div>
-                    </ContentWrapper>
-                </div>
-            )}
-        </header>
+            {
+                showSearch && (
+                    <div className="searchBar">
+                        <ContentWrapper>
+                            <div className="searchInput">
+                                <input
+                                    type="text"
+                                    placeholder="Search for a movie or tv show...."
+                                    onChange={(e) => setQuery(e.target.value)}
+                                    onKeyUp={searchQueryHandler}
+                                />
+                                <VscChromeClose
+                                    onClick={() => setShowSearch(false)}
+                                />
+                            </div>
+                        </ContentWrapper>
+                    </div>
+                )
+            }
+        </header >
     );
 };
 
