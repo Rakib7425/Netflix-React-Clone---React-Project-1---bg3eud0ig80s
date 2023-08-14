@@ -3,7 +3,7 @@ import './style.scss'
 import { FcGoogle } from 'react-icons/fc';
 import { ImGithub } from 'react-icons/im';
 import { BsTwitter } from 'react-icons/bs';
-import { Link, useRevalidator } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import FAQ from '../../components/FAQ/FAQ';
 
 import { useState } from 'react';
