@@ -14,6 +14,7 @@ import { inputLabelClasses } from "@mui/material/InputLabel";
 import { getUser } from '../../store/userSlice'
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
+import Tudum from '../../components/tudm/Tudum';
 
 
 const Login = () => {
@@ -62,7 +63,7 @@ const Login = () => {
                 setTimeout(() => {
                     setLoading(false);
                     navigate('/');
-                }, 200)
+                }, 2000)
 
 
             }
@@ -89,7 +90,7 @@ const Login = () => {
             }
         }
     }
-    return loading ? <div className="loader"><Spinner /></div> : (
+    return loading ? <div className="loader"><Tudum /></div> : (
         <>
             <section className='login-main'>
                 {/* <ContentWrapper>
