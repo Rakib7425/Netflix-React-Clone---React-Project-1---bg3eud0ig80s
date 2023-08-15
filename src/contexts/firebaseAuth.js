@@ -1,31 +1,32 @@
 import { GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-
+import React from 'react'
 import { auth } from '../firebase/firebase';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 import { getUser } from '../store/userSlice'
 import { useDispatch } from 'react-redux';
 
 const provider = new GoogleAuthProvider();
 const githubProvider = new GithubAuthProvider();
-// const navigate = useNavigate();
-// const dispatch = useDispatch();
-
+// const dispatch = new useDispatch();
+// const navigate = new useNavigate();
 
 export const loginWithGoogle = async () => {
-    const userDataa = [];
-
-    // set user details
-    // dispatch(getUser(userData));
-
+    const userData = [];
 
     try {
         const user = await signInWithPopup(auth, provider);
-        console.log(user);
+        // console.log(user);
         toast.success(`Successfully logged in`);
-        userDataa.push(user);
-        console.log(userDataa);
+        userData.push(user);
+        console.log(userData);
+
+        // window.location.href = '/';
+        // *set user details
+        // useEffect(() => {
+        // dispatch(getUser(userData));
+        // }, [userData]);
 
         // setUserData(user);
         // setTimeout(() => {
@@ -51,4 +52,3 @@ export const loginWithGithub = async () => {
 };
 // }
 // export default firebaseAuth;
-export { loginWithGoogle, loginWithGithub }
