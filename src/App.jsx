@@ -18,6 +18,7 @@ import GetStarted from "./pages/getStarted/GetStarted";
 import Signup from "./pages/signup/Signup";
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/ReactToastify.min.css";
+import Profile from "./pages/profile/Profile";
 
 function App() {
     const dispatch = useDispatch();
@@ -78,6 +79,7 @@ function App() {
                 <Route path="/get-started" element={<GetStarted />} />
 
                 <Route path="/user/mylist" element={<Mylist />} />
+                <Route path="/user/profile" element={<Profile />} />
 
                 <Route path="/:mediaType/:id" element={<Details />} />
                 <Route path="/search/:query" element={<SearchResult />} />

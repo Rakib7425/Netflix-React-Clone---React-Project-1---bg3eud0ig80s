@@ -14,7 +14,7 @@ import { inputLabelClasses } from "@mui/material/InputLabel";
 import { getUser } from '../../store/userSlice'
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import Tudum from '../../components/tudm/Tudum';
+import Tudum from '../../components/tudum/Tudum';
 import { loginWithGoogle, loginWithGithub } from '../../contexts/firebaseAuth';
 
 
