@@ -13,7 +13,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../../store/userSlice";
 import { toast } from "react-toastify";
 
-
 const Header = () => {
     const [show, setShow] = useState("top");
     const [lastScrollY, setLastScrollY] = useState(0);
@@ -74,6 +73,8 @@ const Header = () => {
             navigate("/explore/tv");
         } else if (type === "mylist") {
             navigate("user/mylist");
+        } else if (type === "profile") {
+            navigate("user/profile");
         }
         setMobileMenu(false);
     };
@@ -113,7 +114,14 @@ const Header = () => {
                     {userDetails?.data ?
                         <li className="menuItem" onClick={() => navigationHandler("mylist")}>
                             <span>My List</span>
-                        </li> : ''
+                        </li>
+                        : ''
+                    }
+                    {userDetails?.data ?
+                        <li className="menuItem" onClick={() => navigationHandler("profile")}>
+                            <span>My Profile</span>
+                        </li>
+                        : ''
                     }
                     <li className="menuItem">
                         <HiOutlineSearch onClick={openSearch} />

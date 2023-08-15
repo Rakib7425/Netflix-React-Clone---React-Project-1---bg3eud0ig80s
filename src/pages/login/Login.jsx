@@ -15,6 +15,7 @@ import { getUser } from '../../store/userSlice'
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import Tudum from '../../components/tudm/Tudum';
+import { loginWithGoogle, loginWithGithub } from '../../contexts/firebaseAuth';
 
 
 const Login = () => {
@@ -26,6 +27,8 @@ const Login = () => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    // const googleLogin = loginWithGoogle();
 
     useEffect(() => {
         // set user details
@@ -140,12 +143,12 @@ const Login = () => {
                         </div>
                     </form>
                     <div className="social-accounts m">
-                        <div id="google">
+                        <div id="google" onClick={loginWithGoogle}>
                             <FcGoogle size={35} />
                         </div>
 
                         <div id="github">
-                            <ImGithub color='white' size={35} />
+                            <ImGithub color='white' size={35} onClick={loginWithGithub} />
                         </div>
 
                         <div id="twitter">
