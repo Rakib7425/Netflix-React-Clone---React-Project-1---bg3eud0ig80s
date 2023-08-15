@@ -5,7 +5,7 @@ import { ImGithub } from 'react-icons/im';
 import { BsTwitter } from 'react-icons/bs';
 import { Link, useNavigate } from 'react-router-dom';
 import FAQ from '../../components/FAQ/FAQ';
-import Spinner from '../../components/spinner/Spinner'
+// import Spinner from '../../components/spinner/Spinner'
 
 import { useState } from 'react';
 import axios from "axios";
