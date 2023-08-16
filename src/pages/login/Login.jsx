@@ -111,13 +111,13 @@ const Login = () => {
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     InputLabelProps={{ sx: sxx() }}
-                                    autoComplete='off'
+                                    autoComplete
                                 />
                                 <TextField id="password" type='password' label="Password" variant="filled"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     InputLabelProps={{ sx: sxx() }}
-                                    autoComplete='off'
+                                    autoComplete
                                 />
                             </Stack>
                             {/* <input type="email" required
