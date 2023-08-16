@@ -94,49 +94,54 @@ const Header = () => {
     return (
         <header className={`header ${mobileMenu ? "mobileView" : ""} ${show}`}>
             <ContentWrapper>
-                <div className="logo" onClick={() => navigate("/")}>
+                <Link className="logo"
+                    to={`${(userDetails?.data || userDetails?.user?.displayName) ? '/' : '/login'}`}
+                >
                     <img src={logo} alt="" />
 
-                </div>
-                <ul className="menuItems">
-                    <li
-                        className="menuItem"
-                        onClick={() => navigationHandler("movie")}
-                    >
-                        Movies
-                    </li>
-                    <li
-                        className="menuItem"
-                        onClick={() => navigationHandler("tv")}
-                    >
-                        TV Shows
-                    </li>
-                    {userDetails?.data || userDetails?.user?.displayName ?
+                </Link>
+                {userDetails?.data || userDetails?.user?.displayName ?
+
+                    <ul className="menuItems">
+                        <li
+                            className="menuItem"
+                            onClick={() => navigationHandler("movie")}
+                        >
+                            Movies
+                        </li>
+                        <li
+                            className="menuItem"
+                            onClick={() => navigationHandler("tv")}
+                        >
+                            TV Shows
+                        </li>
+                        {/* {userDetails?.data || userDetails?.user?.displayName ? */}
                         <li className="menuItem" onClick={() => navigationHandler("mylist")}>
                             <span>My List</span>
                         </li>
-                        : ''
-                    }
-                    {userDetails?.data || userDetails?.user?.displayName ?
+                        {/* : ''
+                    } */}
+
+                        {/* {userDetails?.data || userDetails?.user?.displayName ? */}
                         <li className="menuItem" onClick={() => navigationHandler("profile")}>
                             <span>My Profile</span>
                         </li>
-                        : ''
-                    }
-                    <li className="menuItem">
-                        <HiOutlineSearch onClick={openSearch} />
-                    </li>
-                    <li className="menuItem">
-                        {!userDetails?.data && !userDetails?.user?.displayName ?
-                            <Link to={'/login'} >
-                                <button className="login-btn">Sign In</button>
-                            </Link> : <Link onClick={logout}>
-                                <button className="login-btn">Logout</button>
-                            </Link>
-                        }
-                    </li>
-                </ul>
+                        {/* : ''
+                    } */}
+                        <li className="menuItem">
+                            <HiOutlineSearch onClick={openSearch} />
+                        </li>
 
+                        <li className="menuItem">
+                            {!userDetails?.data && !userDetails?.user?.displayName ?
+                                <Link to={'/login'} >
+                                    <button className="login-btn">Sign In</button>
+                                </Link> : <Link onClick={logout}>
+                                    <button className="login-btn">Logout</button>
+                                </Link>
+                            }
+                        </li>
+                    </ul> : ''}
                 <div className="mobileMenuItems">
                     <HiOutlineSearch onClick={openSearch} />
                     {mobileMenu ? (
