@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./style.scss";
 import ContentWrapper from '../../components/contentWrapper/ContentWrapper';
 import { Stack, TextField } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ImGithub } from 'react-icons/im';
 import { FcGoogle } from 'react-icons/fc';
 import { BsTwitter } from 'react-icons/bs';
@@ -11,6 +11,10 @@ import axios from "axios";
 import { toast } from 'react-toastify';
 
 import useAuth from '../../hooks/useAuth';
+import { getUser } from '../../store/userSlice'
+import Tudum from '../../components/tudum/Tudum';
+import { useDispatch } from 'react-redux';
+
 
 const Signup = () => {
     const [name, setName] = useState('');
@@ -19,9 +23,17 @@ const Signup = () => {
     const [cPassword, setCPassword] = useState('');
     const projectId = import.meta.env.VITE_APP_PROJECT_ID;
     const [user, setUser] = useState([]);
+    const [loading, setLoading] = useState(false);
 
-    const { loginWithGoogle, loginWithGitHub } = useAuth();
 
+    const { loginWithGoogle, loginWithGitHub, loginWithTwitter } = useAuth();
+
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getUser(user));
+    }, [user])
     let headersList = {
         "projectId": projectId,
         "Content-Type": "application/json"
@@ -42,7 +54,9 @@ const Signup = () => {
 
     const signup = async () => {
         try {
+            setLoading(true);
             let response = await axios.request(reqOptions);
+            console.log(response);
             if (response) {
                 setUser(response);
                 console.log(response);
@@ -51,19 +65,27 @@ const Signup = () => {
                 setEmail('');
                 setPassword('');
                 setCPassword('');
+
+                setTimeout(() => {
+                    setLoading(false);
+                    navigate('/');
+                }, 2000)
             }
 
         } catch (error) {
             console.error(error);
             toast.error('EmailId already registered!');
-
+            setLoading(false);
         }
 
     }
 
     const handleSignup = () => {
-        if (password && name && password && cPassword) {
+        if ((name.length > 5 && email) && (password === cPassword)) {
             signup();
+
+        } else {
+            return false;
         }
     }
     const sxx = () => {
@@ -77,8 +99,9 @@ const Signup = () => {
             }
         }
     }
-    console.log(user.config);
-    return (
+    console.log(user?.config);
+
+    return loading ? <div className="loader"><Tudum /></div> : (
         <>
             <section className="signup">
                 <ContentWrapper>
@@ -121,7 +144,13 @@ const Signup = () => {
                                         value={cPassword}
                                         onChange={(e) => setCPassword(e.target.value)}
 
-                                    />
+                                    />{
+                                        (password !== cPassword) &&
+                                        <span className='notMatched'>
+                                            Confirm password not matched!
+                                        </span>
+                                    }
+
                                 </Stack>
                                 <button onClick={handleSignup}>Signup</button>
                             </form>
@@ -134,8 +163,8 @@ const Signup = () => {
                                     <ImGithub color='white' size={35} />
                                 </div>
 
-                                <div id="twitter-r">
-                                    {/* <BsTwitter size={35} /> */}
+                                <div id="twitter-r" onClick={loginWithTwitter}>
+                                    <BsTwitter size={35} />
                                 </div>
                             </div>
                             <p className="para4">

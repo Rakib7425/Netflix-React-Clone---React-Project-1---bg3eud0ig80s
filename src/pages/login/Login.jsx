@@ -66,7 +66,7 @@ const Login = () => {
                 setTimeout(() => {
                     setLoading(false);
                     navigate('/');
-                }, 2000)
+                }, 2000);
 
 
             }
@@ -141,7 +141,7 @@ const Login = () => {
                                 />
                                 <label htmlFor="remember-me">Remember me</label>
                             </div>
-                            <Link>Need help?</Link>
+                            {/* <Link >Need help?</Link> */}
                         </div>
                     </form>
                     <div className="social-accounts m">
