@@ -39,7 +39,13 @@ const HeroBanner = () => {
     }
 
     const getUserName = useSelector((state) => {
-        const userName = (state?.user?.userDetails?.data?.data?.name);
+        let userName = ''
+        if (state?.user?.userDetails?.data?.data?.name) {
+            userName = state?.user?.userDetails?.data?.data?.name;
+        } else if (state?.user?.userDetails?.user?.displayName) {
+            userName = state?.user?.userDetails?.user?.displayName;
+        }
+
         return userName;
 
     })

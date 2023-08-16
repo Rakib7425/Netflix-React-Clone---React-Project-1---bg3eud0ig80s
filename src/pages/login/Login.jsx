@@ -15,7 +15,7 @@ import { getUser } from '../../store/userSlice'
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import Tudum from '../../components/tudum/Tudum';
-import { loginWithGoogle, loginWithGithub } from '../../contexts/firebaseAuth';
+import useAuth from '../../hooks/useAuth';
 
 
 const Login = () => {
@@ -28,7 +28,7 @@ const Login = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    // const googleLogin = loginWithGoogle();
+    const { loginWithGoogle, loginWithGitHub, loginWithTwitter } = useAuth();
 
     useEffect(() => {
         // set user details
@@ -111,11 +111,13 @@ const Login = () => {
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     InputLabelProps={{ sx: sxx() }}
+                                    autoComplete='off'
                                 />
                                 <TextField id="password" type='password' label="Password" variant="filled"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     InputLabelProps={{ sx: sxx() }}
+                                    autoComplete='off'
                                 />
                             </Stack>
                             {/* <input type="email" required
@@ -131,7 +133,7 @@ const Login = () => {
                             />
                             <label>Password</label> */}
                         </div>
-                        <button type="submit" onClick={handleSignIn}>Sign In</button>
+                        <button type="button" onClick={handleSignIn}>Sign In</button>
                         <div className="form-help">
                             <div className="remember-me">
                                 <input type="checkbox" defaultChecked id="remember-me"
@@ -147,11 +149,11 @@ const Login = () => {
                             <FcGoogle size={35} />
                         </div>
 
-                        <div id="github">
-                            <ImGithub color='white' size={35} onClick={loginWithGithub} />
+                        <div id="github" onClick={loginWithGitHub} >
+                            <ImGithub color='white' size={35} />
                         </div>
 
-                        <div id="twitter">
+                        <div id="twitter" onClick={loginWithTwitter} >
                             <BsTwitter size={35} />
                         </div>
                     </div>

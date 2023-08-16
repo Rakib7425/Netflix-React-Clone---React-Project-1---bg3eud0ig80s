@@ -111,13 +111,13 @@ const Header = () => {
                     >
                         TV Shows
                     </li>
-                    {userDetails?.data ?
+                    {userDetails?.data || userDetails?.user?.displayName ?
                         <li className="menuItem" onClick={() => navigationHandler("mylist")}>
                             <span>My List</span>
                         </li>
                         : ''
                     }
-                    {userDetails?.data ?
+                    {userDetails?.data || userDetails?.user?.displayName ?
                         <li className="menuItem" onClick={() => navigationHandler("profile")}>
                             <span>My Profile</span>
                         </li>
@@ -127,7 +127,7 @@ const Header = () => {
                         <HiOutlineSearch onClick={openSearch} />
                     </li>
                     <li className="menuItem">
-                        {!userDetails?.data ?
+                        {!userDetails?.data && !userDetails?.user?.displayName ?
                             <Link to={'/login'} >
                                 <button className="login-btn">Sign In</button>
                             </Link> : <Link onClick={logout}>

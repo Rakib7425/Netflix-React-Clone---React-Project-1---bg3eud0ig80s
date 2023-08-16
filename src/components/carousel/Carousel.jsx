@@ -13,7 +13,9 @@ import PosterFallback from "../../assets/no-poster.png";
 import CircleRating from "../circleRating/CircleRating";
 import Genres from "../genres/Genres";
 
+
 import "./style.scss";
+import { MdOutlinePlaylistAdd } from "react-icons/md";
 
 const Carousel = ({ data, loading, endpoint, title }) => {
     const carouselContainer = useRef();
@@ -67,16 +69,16 @@ const Carousel = ({ data, loading, endpoint, title }) => {
                             return (
                                 <div
                                     key={item.id}
-                                    className="carouselItem"
+                                    className="carouselItem cardHover"
                                     onClick={() =>
                                         navigate(
-                                            `/${item.media_type || endpoint}/${
-                                                item.id
+                                            `/${item.media_type || endpoint}/${item.id
                                             }`
                                         )
                                     }
                                 >
-                                    <div className="posterBlock">
+                                    {/* <MdOutlinePlaylistAdd className="watchIcon" key={item.id} onClick={console.log('HEHE')} /> */}
+                                    <div className="posterBlock ">
                                         <Img src={posterUrl} />
                                         <CircleRating
                                             rating={item.vote_average.toFixed(
@@ -98,6 +100,7 @@ const Carousel = ({ data, loading, endpoint, title }) => {
                                         </span>
                                     </div>
                                 </div>
+
                             );
                         })}
                     </div>

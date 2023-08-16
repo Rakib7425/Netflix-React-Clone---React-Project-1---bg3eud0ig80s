@@ -10,6 +10,8 @@ import { inputLabelClasses } from "@mui/material/InputLabel";
 import axios from "axios";
 import { toast } from 'react-toastify';
 
+import useAuth from '../../hooks/useAuth';
+
 const Signup = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -17,6 +19,8 @@ const Signup = () => {
     const [cPassword, setCPassword] = useState('');
     const projectId = import.meta.env.VITE_APP_PROJECT_ID;
     const [user, setUser] = useState([]);
+
+    const { loginWithGoogle, loginWithGitHub } = useAuth();
 
     let headersList = {
         "projectId": projectId,
@@ -122,16 +126,16 @@ const Signup = () => {
                                 <button onClick={handleSignup}>Signup</button>
                             </form>
                             <div className="social-accounts">
-                                <div id="google-e">
+                                <div id="google-e" onClick={loginWithGoogle}>
                                     <FcGoogle size={35} />
                                 </div>
 
-                                <div id="github-b">
+                                <div id="github-b" onClick={loginWithGitHub}>
                                     <ImGithub color='white' size={35} />
                                 </div>
 
                                 <div id="twitter-r">
-                                    <BsTwitter size={35} />
+                                    {/* <BsTwitter size={35} /> */}
                                 </div>
                             </div>
                             <p className="para4">
