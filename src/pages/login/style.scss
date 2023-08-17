@@ -214,6 +214,14 @@ form .form-help :where(label, a) {
     }
 }
 
+.eyeIcon {
+    // font-size: 35px;
+    // position: relative;
+    // color: rgb(218, 29, 29);
+    // float: right;
+}
+
+
 @media (max-width: 740px) {
     body::before {
         display: none;

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import "./style.scss";
 import ContentWrapper from '../../components/contentWrapper/ContentWrapper';
+import FAQ from '../../components/FAQ/FAQ';
 import { Stack, TextField } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import { ImGithub } from 'react-icons/im';
@@ -99,7 +100,7 @@ const Signup = () => {
             }
         }
     }
-    console.log(user?.config);
+    // console.log(user?.config);
 
     return loading ? <div className="loader"><Tudum /></div> : (
         <>
@@ -175,6 +176,7 @@ const Signup = () => {
                     </div>
                 </ContentWrapper>
             </section >
+            <FAQ />
         </>
     );
 }

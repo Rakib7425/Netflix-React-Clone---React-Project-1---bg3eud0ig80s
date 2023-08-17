@@ -9,14 +9,14 @@ import FAQ from '../../components/FAQ/FAQ';
 
 import { useState } from 'react';
 import axios from "axios";
-import { Stack, TextField } from '@mui/material';
+import { IconButton, InputAdornment, Stack, TextField } from '@mui/material';
 import { inputLabelClasses } from "@mui/material/InputLabel";
 import { getUser } from '../../store/userSlice'
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import Tudum from '../../components/tudum/Tudum';
 import useAuth from '../../hooks/useAuth';
-
+import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai'
 
 const Login = () => {
     const projectId = import.meta.env.VITE_APP_PROJECT_ID;
@@ -93,6 +93,12 @@ const Login = () => {
             }
         }
     }
+
+    const [showPassword, setShowPassword] = React.useState(false);
+
+    const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+
     return loading ? <div className="loader"><Tudum /></div> : (
         <>
             <section className='login-main'>
@@ -107,18 +113,22 @@ const Login = () => {
                     <form onSubmit={(e) => { e.preventDefault() }}>
                         <div className="form-control">
                             <Stack spacing={3}>
-                                <TextField id="email" type='email' label="Email" variant="filled"
+                                <TextField id="email" autoComplete type='email' label="Email" variant="filled"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     InputLabelProps={{ sx: sxx() }}
-                                    autoComplete
+
                                 />
-                                <TextField id="password" type='password' label="Password" variant="filled"
+                                {/* {showPassword ? <AiFillEyeInvisible className='eyeIcon' /> : <AiFillEye className='eyeIcon' />} */}
+                                <TextField id="password" autoComplete type='password' label="Password" variant="filled"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     InputLabelProps={{ sx: sxx() }}
-                                    autoComplete
                                 />
+
+
+
+
                             </Stack>
                             {/* <input type="email" required
                                 value={email}

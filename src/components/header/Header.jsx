@@ -91,6 +91,9 @@ const Header = () => {
         }
 
     }
+
+
+
     return (
         <header className={`header ${mobileMenu ? "mobileView" : ""} ${show}`}>
             <ContentWrapper>
@@ -141,7 +144,16 @@ const Header = () => {
                                 </Link>
                             }
                         </li>
-                    </ul> : ''}
+                    </ul>
+                    :
+                    <ul className="menuItems">
+                        <li className="menuItem">
+                            <Link to={'/login'} >
+                                <button className="login-btn">Sign In</button>
+                            </Link>
+                        </li>
+                    </ul>
+                }
                 <div className="mobileMenuItems">
                     <HiOutlineSearch onClick={openSearch} />
                     {mobileMenu ? (
