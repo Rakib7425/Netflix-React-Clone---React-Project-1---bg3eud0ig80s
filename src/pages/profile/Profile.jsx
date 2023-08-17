@@ -57,7 +57,14 @@ const Profile = () => {
 
     const handleFileSet = (e) => {
         // setUserImg(e.target.files[0]);
-        setUserImg(e.target.value.split("\\"));
+
+        // console.log(e.target.value.split("\\"));
+        let str = '';
+        for (let i of e.target.value) {
+            str += i;
+        } console.log(str);
+
+        setUserImg(str);
     }
 
 
