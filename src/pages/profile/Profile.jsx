@@ -70,11 +70,10 @@ const Profile = () => {
                     <div >
                         <Img className='userPhoto'
                             alt="User Avatar"
-                            // value={userImg}
                             src={userImg}
                         />
                     </div>
-                    <Input type='file' className='inputBtn' onChange={(e) => { console.log(e.target.value); }} />
+                    <Input type='file' className='inputBtn' onChange={(e) => { setUserImg(e.target.value) }} />
                 </div>
 
                 {/* <h1>Working on this Page</h1> */}
