@@ -113,14 +113,14 @@ const Login = () => {
                     <form onSubmit={(e) => { e.preventDefault() }}>
                         <div className="form-control">
                             <Stack spacing={3}>
-                                <TextField id="email" autoComplete type='email' label="Email" variant="filled"
+                                <TextField id="email" type='email' label="Email" variant="filled"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     InputLabelProps={{ sx: sxx() }}
 
                                 />
                                 {/* {showPassword ? <AiFillEyeInvisible className='eyeIcon' /> : <AiFillEye className='eyeIcon' />} */}
-                                <TextField id="password" autoComplete type='password' label="Password" variant="filled"
+                                <TextField id="password" type='password' label="Password" variant="filled"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     InputLabelProps={{ sx: sxx() }}
