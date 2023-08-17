@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import avatar from '../../assets/avatar.png';
 import Img from '../../components/lazyLoadImage/Img';
 import { MdUploadFile } from 'react-icons/md'
+import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
     const [userImg, setUserImg] = useState(avatar);
@@ -16,15 +17,20 @@ const Profile = () => {
 
     const newtonUser = useSelector((state) => state?.user?.userDetails?.data);
     const firebaseUser = useSelector((state) => state?.user?.userDetails?.user);
-
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (newtonUser) {
             setIsNewtonUser(true);
             setUserData(newtonUser);
-        } else {
+
+        } else if (firebaseUser) {
             setIsNewtonUser(false);
             setUserData(firebaseUser);
+
+        }
+        else {
+            navigate('/login')
         }
     }, [userData]);
 
@@ -57,16 +63,8 @@ const Profile = () => {
 
     const handleFileSet = (e) => {
         // setUserImg(e.target.files[0]);
-
-        // console.log(e.target.value.split("\\"));
-        let str = '';
-        for (let i of e.target.value) {
-            str += i;
-        } console.log(str);
-
-        setUserImg(str);
+        setUserImg(URL.createObjectURL(e.target.files[0]));
     }
-
 
     return (
         <ContentWrapper>
@@ -95,15 +93,15 @@ const Profile = () => {
 
                         <div >
                             <Img className='userPhoto'
+                                id='output'
                                 alt="User Avatar"
                                 src={userImg}
-                            // value={userImg}
                             />
                         </div>
 
-                        <div>
+                        {/* <div>
                             <Input type='file' className='inputBtn' onChange={(e) => { handleFileSet(e) }} />
-                        </div>
+                        </div> */}
 
                         <div>
                             <Button
@@ -111,9 +109,10 @@ const Profile = () => {
                                 variant="outlined"
                                 startIcon={<MdUploadFile />}
                                 sx={{ marginRight: "1rem" }}
+                                className='inputBtn'
                             >
                                 Select Image
-                                <input type="file" accept=".jpeg, .jpg, .png, .ico" hidden onChange={(e) => { handleFileUpload(e) }} />
+                                <input type="file" accept=".jpeg, .jpg, .png, .ico" hidden onChange={(e) => { handleFileSet(e) }} />
                             </Button>
                         </div>
                     </div>
