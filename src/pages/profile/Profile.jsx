@@ -56,7 +56,8 @@ const Profile = () => {
     };
 
     const handleFileSet = (e) => {
-        setUserImg(e.target.files[0]);
+        // setUserImg(e.target.files[0]);
+        setUserImg(e.target.value.split("\\"));
     }
 
 
@@ -76,39 +77,50 @@ const Profile = () => {
                     </div>
                     <div className="middle">
                         <h3> User Settings</h3>
-                        <img src="" alt="" />
+
                     </div>
                     <div className="right">
                         <h3>Update password</h3>
                     </div>
                 </div>
                 <div className="profile_content">
-                    <div >
-                        <Img className='userPhoto'
-                            alt="User Avatar"
-                            src={userImg}
-                        // value={userImg}
-                        />
-                    </div>
-
                     <div>
-                        <Input type='file' className='inputBtn' onChange={(e) => { handleFileSet(e) }} />
+
+                        <div >
+                            <Img className='userPhoto'
+                                alt="User Avatar"
+                                src={userImg}
+                            // value={userImg}
+                            />
+                        </div>
+
+                        <div>
+                            <Input type='file' className='inputBtn' onChange={(e) => { handleFileSet(e) }} />
+                        </div>
+
+                        <div>
+                            <Button
+                                component="label"
+                                variant="outlined"
+                                startIcon={<MdUploadFile />}
+                                sx={{ marginRight: "1rem" }}
+                            >
+                                Select Image
+                                <input type="file" accept=".jpeg, .jpg, .png, .ico" hidden onChange={(e) => { handleFileUpload(e) }} />
+                            </Button>
+                        </div>
                     </div>
 
-                    <div>
-                        <Button
-                            component="label"
-                            variant="outlined"
-                            startIcon={<MdUploadFile />}
-                            sx={{ marginRight: "1rem" }}
-                        >
-                            Select Image
-                            <input type="file" accept=".jpeg, .jpg, .png, .ico" hidden onChange={(e) => { handleFileUpload(e) }} />
-                        </Button>
+                    <div className="userSettings">
+                        {/* Profile Settings */}
                     </div>
 
+                    <div className="userPasswords">
+                        {/* Profile Settings */}
+                    </div>
 
                 </div>
+
 
                 {/* <h1>Working on this Page</h1> */}
             </div>
