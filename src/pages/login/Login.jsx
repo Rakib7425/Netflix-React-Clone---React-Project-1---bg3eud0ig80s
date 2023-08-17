@@ -30,11 +30,6 @@ const Login = () => {
 
     const { loginWithGoogle, loginWithGitHub, loginWithTwitter } = useAuth();
 
-    useEffect(() => {
-        // set user details
-        dispatch(getUser(userData));
-
-    }, [userData]);
 
     let headersList = {
         "projectId": projectId,
@@ -97,6 +92,12 @@ const Login = () => {
     const [showPassword, setShowPassword] = React.useState(false);
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+    useEffect(() => {
+        // set user details
+        dispatch(getUser(userData));
+
+    }, [userData]);
 
 
     return loading ? <div className="loader"><Tudum /></div> : (

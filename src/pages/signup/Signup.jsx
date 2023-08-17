@@ -32,9 +32,7 @@ const Signup = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(getUser(user));
-    }, [user])
+
     let headersList = {
         "projectId": projectId,
         "Content-Type": "application/json"
@@ -101,6 +99,9 @@ const Signup = () => {
         }
     }
     // console.log(user?.config);
+    useEffect(() => {
+        dispatch(getUser(user));
+    }, [user])
 
     return loading ? <div className="loader"><Tudum /></div> : (
         <>
