@@ -84,10 +84,13 @@
         color: red;
     }
 
-}
-
-@include lg {
-    .userSettings {
-        display: flex;
+    .passSubButton {
+        margin-bottom: 30px;
     }
 }
+
+// @include lg {
+//     .userSettings {
+//         display: flex;
+//     }
+// }

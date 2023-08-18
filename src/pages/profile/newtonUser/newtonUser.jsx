@@ -6,14 +6,24 @@ import avatar from '../../../assets/avatar.png';
 import { MdUploadFile } from 'react-icons/md'
 import { TbSend } from 'react-icons/tb'
 import { RiLockPasswordLine } from 'react-icons/ri'
+import axios from "axios";
+
+
 
 const NewtonUser = ({ userData }) => {
   const [userImg, setUserImg] = useState(avatar);
-
+  const [name, setName] = useState(userData?.data?.name);
   const [email, setEmail] = useState(userData?.data?.email);
-  const [password, setPassword] = useState('');
+  const [currPassword, setCurrPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [conNewPassword, setConNewPassword] = useState('');
+
+  const projectId = import.meta.env.VITE_APP_PROJECT_ID;
+  const token = 'Bearer' + userData.token;
+
+
+  console.log("token", token);
+
 
   const handleFileSet = (e) => {
     // setUserImg(e.target.files[0]);
@@ -31,6 +41,42 @@ const NewtonUser = ({ userData }) => {
   }
 
   console.log(userData);
+
+  let headersList = {
+    "projectId": projectId,
+    "Authorization": token,
+    "Content-Type": "application/json"
+  }
+
+  let bodyContent = JSON.stringify({
+    "name": name,
+    "email": email,
+    "passwordCurrent": currPassword,
+    "password": conNewPassword
+  });
+
+  // let reqOptions = {
+  //   url: "https://academics.newtonschool.co/api/v1/user/updateMyPassword",
+  //   method: "PATCH",
+  //   headers: headersList,
+  //   data: bodyContent,
+  // }
+
+
+
+  const updatePassword = async () => {
+    let response = await fetch("https://academics.newtonschool.co/api/v1/user/updateMyPassword", {
+      method: "PATCH",
+      body: bodyContent,
+      headers: headersList
+    });
+    // if (conNewPassword === newPassword) {
+    //   let response = await axios.request(reqOptions);
+    console.log(response);
+    // }
+
+  }
+
   return (
     <>
       <div className="profile_headers">
@@ -63,17 +109,16 @@ const NewtonUser = ({ userData }) => {
           </div>
         </div>
 
-
         <div className="middle">
-          <h3>Update Password</h3>
+          <h3>Update Password :--</h3>
           <div >
             <Stack spacing={3} className="userSettings">
 
-              <TextField
+              {/* <TextField
                 disabled
                 id="name"
                 label="Name"
-                defaultValue={userData?.data?.name}
+                defaultValue={name}
                 variant="filled"
               />
               <TextField
@@ -82,11 +127,13 @@ const NewtonUser = ({ userData }) => {
                 label="Email"
                 value={email}
                 variant="filled"
-              />
+              /> */}
+              <h3 >Name: {name}</h3>
+              <h3 >Email: {email}</h3>
 
               <TextField id="currentPassword" type='text' label="Current Password" variant="filled"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={currPassword}
+                onChange={(e) => setCurrPassword(e.target.value)}
                 InputLabelProps={{ sx: sxx() }}
 
               />
@@ -108,7 +155,7 @@ const NewtonUser = ({ userData }) => {
                   Confirm password not matched!
                 </span>
               }
-              <Button variant="contained" className='subButton' endIcon={<RiLockPasswordLine />}>Update password</Button>
+              <Button variant="contained" className='passSubButton' endIcon={<RiLockPasswordLine />} onClick={updatePassword}>Update password</Button>
             </Stack>
           </div>
         </div>
