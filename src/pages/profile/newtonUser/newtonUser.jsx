@@ -105,6 +105,13 @@ const NewtonUser = ({ userData }) => {
 
   }
 
+  
+  const updateImage = () => {
+    console.log('submitting');
+  }
+
+
+
   return (
     <>
       <div className="profile_headers">
@@ -133,7 +140,7 @@ const NewtonUser = ({ userData }) => {
                 <input type="file" accept=".jpeg, .jpg, .png, .ico" hidden onChange={(e) => { handleFileSet(e) }} />
 
               </Button>
-              <Button variant="contained" className='subButton' endIcon={<TbSend />}>update</Button>
+              <Button variant="contained" className='subButton' endIcon={<TbSend />} onClick={updateImage}>update</Button>
             </div>
           </div>
         </div>
@@ -165,11 +172,12 @@ const NewtonUser = ({ userData }) => {
                 value={currPassword}
                 onChange={(e) => setCurrPassword(e.target.value)}
                 InputLabelProps={{ sx: sxx() }}
-
+                required
               />
               {/* {showPassword ? <AiFillEyeInvisible className='eyeIcon' /> : <AiFillEye className='eyeIcon' />} */}
               <TextField id="NewPassword" type='password' label="New Password" variant="filled"
                 value={newPassword}
+                required
                 onChange={(e) => setNewPassword(e.target.value)}
                 InputLabelProps={{ sx: sxx() }}
               />

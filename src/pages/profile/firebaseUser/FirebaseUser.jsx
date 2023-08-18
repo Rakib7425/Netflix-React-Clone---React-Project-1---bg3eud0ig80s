@@ -4,7 +4,7 @@ import Img from '../../../components/lazyLoadImage/Img';
 import avatar from '../../../assets/avatar.png';
 import { Button } from '@mui/material';
 import { MdUploadFile } from 'react-icons/md'
-const FirebaseUser = () => {
+const FirebaseUser = ({ userData }) => {
 
     const [userImg, setUserImg] = useState(avatar);
     return (
