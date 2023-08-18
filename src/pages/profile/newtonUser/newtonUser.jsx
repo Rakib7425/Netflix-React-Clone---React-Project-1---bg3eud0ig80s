@@ -7,10 +7,14 @@ import { MdUploadFile } from 'react-icons/md'
 import { TbSend } from 'react-icons/tb'
 import { RiLockPasswordLine } from 'react-icons/ri'
 import axios from "axios";
+import { toast } from 'react-toastify';
+import { useSelector, useDispatch } from 'react-redux';
+import { getUser } from '../../../store/userSlice';
 
 
 
 const NewtonUser = ({ userData }) => {
+
   const [userImg, setUserImg] = useState(avatar);
   const [name, setName] = useState(userData?.data?.name);
   const [email, setEmail] = useState(userData?.data?.email);
@@ -22,8 +26,15 @@ const NewtonUser = ({ userData }) => {
   const token = 'Bearer ' + userData.token;
 
 
-  console.log("token", token);
+  // const userToken = useSelector((state) => state?.user?.userDetails?.data?.token)
+  // const dispatch = useDispatch();
 
+  // console.log(user);
+  // useEffect(() => {
+  //   // set user details
+  //   dispatch(getUser(userData));
+
+  // }, [token]);
 
   const handleFileSet = (e) => {
     // setUserImg(e.target.files[0]);
@@ -49,7 +60,7 @@ const NewtonUser = ({ userData }) => {
   }
 
   let bodyContent = JSON.stringify({
-    // "name": name,
+    "name": name,
     "email": email,
     "passwordCurrent": currPassword,
     "password": conNewPassword
@@ -71,11 +82,25 @@ const NewtonUser = ({ userData }) => {
     //   headers: headersList
     // });
 
+    try {
+      if (conNewPassword === newPassword) {
+        let response = await axios.request(reqOptions);
 
-    if (conNewPassword === newPassword) {
-      let response = await axios.request(reqOptions);
-      console.log(response);
+        if (response.data.token) {
+          setCurrPassword('');
+          setConNewPassword('');
+
+          toast.success('Password changed Successfully!')
+        } else if (!response) {
+          toast.success(response.message);
+        }
+        console.log(response);
+      }
+    } catch (error) {
+      toast.error(error.message);
+      console.error(error);
     }
+
 
   }
 

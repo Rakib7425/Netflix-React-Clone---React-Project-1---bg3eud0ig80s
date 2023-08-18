@@ -9,14 +9,13 @@ import FAQ from '../../components/FAQ/FAQ';
 
 import { useState } from 'react';
 import axios from "axios";
-import { IconButton, InputAdornment, Stack, TextField } from '@mui/material';
+import { Stack, TextField } from '@mui/material';
 import { inputLabelClasses } from "@mui/material/InputLabel";
 import { getUser } from '../../store/userSlice'
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import Tudum from '../../components/tudum/Tudum';
 import useAuth from '../../hooks/useAuth';
-import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai'
 
 const Login = () => {
     const projectId = import.meta.env.VITE_APP_PROJECT_ID;
