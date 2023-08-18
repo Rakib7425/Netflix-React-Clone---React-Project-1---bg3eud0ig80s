@@ -86,7 +86,9 @@ const Profile = () => {
             <div>
                 <h1 className='pageTitle'>
                     My Profile {isNewtonUser ? '(Newton User).' : '(Firebase User)'}
+
                 </h1>
+                {/* <hr /> */}
                 {/* <h1>Working on this Page</h1> */}
             </div>
             <div className="content">

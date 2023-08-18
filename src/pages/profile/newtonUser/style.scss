@@ -8,9 +8,11 @@
     flex-direction: column;
     color: white;
 
+
     @include md {
         flex-direction: row;
         align-items: start;
+        min-height: 90vh;
     }
 
     @include xl {
@@ -26,6 +28,11 @@
     justify-content: space-between;
     flex-wrap: wrap;
     flex-direction: column;
+
+    @include md {
+        margin-top: 20%;
+
+    }
 
     .userPhoto {
         width: 150px;
@@ -51,6 +58,11 @@
 
         .subButton {
             background: #04a386;
+
+            &:hover {
+                background: #05362d;
+
+            }
         }
 
         .inputBtn {
@@ -90,7 +102,8 @@
 }
 
 // @include lg {
-//     .userSettings {
-//         display: flex;
-//     }
+.userSettings {
+    color: rgb(103, 17, 223);
+}
+
 // }

@@ -103,7 +103,6 @@ const NewtonUser = ({ userData }) => {
       console.error(error);
     }
 
-
   }
 
   return (
@@ -111,7 +110,8 @@ const NewtonUser = ({ userData }) => {
       <div className="profile_headers">
 
         <div className="left">
-          <h3>Update Profile Image</h3>
+          <h3>Update Profile Image :</h3>
+
           <div className="photoContent">
             <div >
               <Img className='userPhoto'
@@ -139,7 +139,7 @@ const NewtonUser = ({ userData }) => {
         </div>
 
         <div className="middle">
-          <h3>Update Password :--</h3>
+          <h3>Update Password :</h3>
           <div >
             <Stack spacing={3} className="userSettings">
 
@@ -157,8 +157,9 @@ const NewtonUser = ({ userData }) => {
                 value={email}
                 variant="filled"
               /> */}
-              <h3 >Name: {name}</h3>
-              <h3 >Email: {email}</h3>
+
+              <h3 >My Name: {name}</h3>
+              <h3 >My Email: {email}</h3>
 
               <TextField id="currentPassword" type='text' label="Current Password" variant="filled"
                 value={currPassword}
