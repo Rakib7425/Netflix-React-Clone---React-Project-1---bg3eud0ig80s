@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import './style.scss';
 import ContentWrapper from '../../components/contentWrapper/ContentWrapper';
-import { Avatar, Button, Input } from '@mui/material';
+import { Button } from '@mui/material';
 import { useSelector } from 'react-redux';
 
 import avatar from '../../assets/avatar.png';
 import Img from '../../components/lazyLoadImage/Img';
 import { MdUploadFile } from 'react-icons/md'
 import { useNavigate } from 'react-router-dom';
+import FirebaseUser from './firebaseUser/FirebaseUser';
+import NewtonUser from './newtonUser/NewtonUser';
+
 
 const Profile = () => {
     const [userImg, setUserImg] = useState(avatar);
@@ -68,67 +71,16 @@ const Profile = () => {
 
     return (
         <ContentWrapper>
-            <div className='_main_'>
-                <div>
-                    <h1 className='pageTitle'>
-                        My Profile {isNewtonUser ? '(Newton User).' : '(Firebase User)'}
-                    </h1>
-                </div>
-                <div className="profile_headers">
-
-                    <div className="left">
-                        <h3>Photo</h3>
-
-                    </div>
-                    <div className="middle">
-                        <h3> User Settings</h3>
-
-                    </div>
-                    <div className="right">
-                        <h3>Update password</h3>
-                    </div>
-                </div>
-                <div className="profile_content">
-                    <div>
-
-                        <div >
-                            <Img className='userPhoto'
-                                id='output'
-                                alt="User Avatar"
-                                src={userImg}
-                            />
-                        </div>
-
-                        {/* <div>
-                            <Input type='file' className='inputBtn' onChange={(e) => { handleFileSet(e) }} />
-                        </div> */}
-
-                        <div>
-                            <Button
-                                component="label"
-                                variant="outlined"
-                                startIcon={<MdUploadFile />}
-                                sx={{ marginRight: "1rem" }}
-                                className='inputBtn'
-                            >
-                                Select Image
-                                <input type="file" accept=".jpeg, .jpg, .png, .ico" hidden onChange={(e) => { handleFileSet(e) }} />
-                            </Button>
-                        </div>
-                    </div>
-
-                    <div className="userSettings">
-                        {/* Profile Settings */}
-                    </div>
-
-                    <div className="userPasswords">
-                        {/* Profile Settings */}
-                    </div>
-
-                </div>
-
-
+            {/* <div className='_main_'> */}
+            <div>
+                <h1 className='pageTitle'>
+                    My Profile {isNewtonUser ? '(Newton User).' : '(Firebase User)'}
+                </h1>
                 {/* <h1>Working on this Page</h1> */}
+            </div>
+            <div className="content">
+
+                {isNewtonUser ? <NewtonUser userData={userData} /> : <FirebaseUser userData={userData} />}
             </div>
         </ContentWrapper>
     )

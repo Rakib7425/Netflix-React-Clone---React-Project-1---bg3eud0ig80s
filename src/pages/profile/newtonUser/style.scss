@@ -1,0 +1,93 @@
+@import "../../../mixins.scss";
+
+.profile_headers {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    color: white;
+
+    @include md {
+        flex-direction: row;
+        align-items: start;
+    }
+
+    @include xl {
+        justify-content: start;
+        gap: 20%;
+    }
+}
+
+.photoContent {
+    margin: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: column;
+
+    .userPhoto {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background-color: rgb(21, 33, 91);
+        box-shadow: 0 0 10px 0 rgba(31, 244, 12, 0.91);
+        // margin-bottom: 20px;
+        // Add more styles for photo if needed
+    }
+
+    .inputButtons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 30px;
+        // flex-direction: column;
+
+        // @include md {
+        //     flex-direction: row;
+        //     gap: 10px;
+        // }
+
+        .subButton {
+            background: #04a386;
+        }
+
+        .inputBtn {
+            // margin-top: 2rem;
+            color: rgb(120, 238, 36);
+        }
+    }
+}
+
+.middle {
+    // margin: 30px;
+
+    h3 {
+        margin-bottom: 30px;
+    }
+
+    #email,
+    #name {
+        background: rgb(163, 176, 233);
+    }
+
+    #currentPassword,
+    #confirmNewPassword,
+    #NewPassword {
+        color: white;
+        width: 18rem;
+        background-color: rgba(6, 6, 6, 0.9);
+    }
+
+    .notMatched {
+        color: red;
+    }
+
+}
+
+@include lg {
+    .userSettings {
+        display: flex;
+    }
+}
