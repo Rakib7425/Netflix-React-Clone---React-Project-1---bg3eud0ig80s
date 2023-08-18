@@ -9,7 +9,8 @@ import Img from '../../components/lazyLoadImage/Img';
 import { MdUploadFile } from 'react-icons/md'
 import { useNavigate } from 'react-router-dom';
 import FirebaseUser from './firebaseUser/FirebaseUser';
-import NewtonUser from './newtonUser/NewtonUser';
+// import NewtonUser from './newtonUser/NewtonUser';
+import NewtonUser from './newtonUser/newtonUser';
 
 
 const Profile = () => {
@@ -21,6 +22,16 @@ const Profile = () => {
     const newtonUser = useSelector((state) => state?.user?.userDetails?.data);
     const firebaseUser = useSelector((state) => state?.user?.userDetails?.user);
     const navigate = useNavigate();
+
+
+    // const [newtonUser, setNewtonUser] = useState([]);
+    // const [firebaseUser, setFirebaseUser] = useState([]);
+
+    // useEffect(() => {
+    //     setNewtonUser(useSelector((state) => state?.user?.userDetails?.data));
+    //     setFirebaseUser(useSelector((state) => state?.user?.userDetails?.user));
+    // }, [])
+
 
     useEffect(() => {
         if (newtonUser) {
@@ -39,7 +50,7 @@ const Profile = () => {
 
     // console.log(newtonUser);
     // console.log(firebaseUser?.displayName);
-    console.log(userData);
+    // console.log(userData);
 
     // console.log(user);
     // console.log(userData);

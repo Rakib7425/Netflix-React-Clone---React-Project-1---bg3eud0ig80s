@@ -19,7 +19,7 @@ const NewtonUser = ({ userData }) => {
   const [conNewPassword, setConNewPassword] = useState('');
 
   const projectId = import.meta.env.VITE_APP_PROJECT_ID;
-  const token = 'Bearer' + userData.token;
+  const token = 'Bearer ' + userData.token;
 
 
   console.log("token", token);
@@ -49,31 +49,33 @@ const NewtonUser = ({ userData }) => {
   }
 
   let bodyContent = JSON.stringify({
-    "name": name,
+    // "name": name,
     "email": email,
     "passwordCurrent": currPassword,
     "password": conNewPassword
   });
 
-  // let reqOptions = {
-  //   url: "https://academics.newtonschool.co/api/v1/user/updateMyPassword",
-  //   method: "PATCH",
-  //   headers: headersList,
-  //   data: bodyContent,
-  // }
-
+  let reqOptions = {
+    url: "https://academics.newtonschool.co/api/v1/user/updateMyPassword",
+    method: "PATCH",
+    headers: headersList,
+    data: bodyContent,
+  }
 
 
   const updatePassword = async () => {
-    let response = await fetch("https://academics.newtonschool.co/api/v1/user/updateMyPassword", {
-      method: "PATCH",
-      body: bodyContent,
-      headers: headersList
-    });
-    // if (conNewPassword === newPassword) {
-    //   let response = await axios.request(reqOptions);
-    console.log(response);
-    // }
+
+    // let response = await fetch("https://academics.newtonschool.co/api/v1/user/updateMyPassword", {
+    //   method: "PATCH",
+    //   body: bodyContent,
+    //   headers: headersList
+    // });
+
+
+    if (conNewPassword === newPassword) {
+      let response = await axios.request(reqOptions);
+      console.log(response);
+    }
 
   }
 
