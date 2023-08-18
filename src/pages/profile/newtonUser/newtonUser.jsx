@@ -53,34 +53,30 @@ const NewtonUser = ({ userData }) => {
 
   console.log(userData);
 
+
   let headersList = {
     "projectId": projectId,
     "Authorization": token,
     "Content-Type": "application/json"
   }
 
-  let bodyContent = JSON.stringify({
-    "name": name,
-    "email": email,
-    "passwordCurrent": currPassword,
-    "password": conNewPassword
-  });
-
-  let reqOptions = {
-    url: "https://academics.newtonschool.co/api/v1/user/updateMyPassword",
-    method: "PATCH",
-    headers: headersList,
-    data: bodyContent,
-  }
-
 
   const updatePassword = async () => {
 
-    // let response = await fetch("https://academics.newtonschool.co/api/v1/user/updateMyPassword", {
-    //   method: "PATCH",
-    //   body: bodyContent,
-    //   headers: headersList
-    // });
+
+    let bodyContent = JSON.stringify({
+      "name": name,
+      "email": email,
+      "passwordCurrent": currPassword,
+      "password": conNewPassword
+    });
+
+    let reqOptions = {
+      url: "https://academics.newtonschool.co/api/v1/user/updateMyPassword",
+      method: "PATCH",
+      headers: headersList,
+      data: bodyContent,
+    }
 
     try {
       if (conNewPassword === newPassword) {
@@ -105,11 +101,38 @@ const NewtonUser = ({ userData }) => {
 
   }
 
-  
-  const updateImage = () => {
-    console.log('submitting');
-  }
+  const updateImage = async () => {
 
+    try {
+      console.log('submitting');
+      // const formData = new FormData();
+      // formData.append('png', userImg); // Assuming you want to send the selected image
+      // console.log(formData);
+
+      const response = await axios.patch(
+        'https://academics.newtonschool.co/api/v1/user/updateProfileImage', userImg, {
+        headers: {
+          projectId: projectId,
+          Authorization: token,
+          ContentType: 'multipart/form-data',
+        },
+        // data: {
+        //   data: userImg,
+        // },
+      }
+      );
+
+      if (response.data.success) {
+        // Update user's image URL in state or do any necessary updates
+        toast.success('Profile image updated successfully!');
+      } else {
+        toast.error('Failed to update profile image.');
+      }
+    } catch (error) {
+      toast.error('An error occurred while updating profile image.');
+      console.error(error);
+    }
+  };
 
 
   return (
@@ -140,7 +163,7 @@ const NewtonUser = ({ userData }) => {
                 <input type="file" accept=".jpeg, .jpg, .png, .ico" hidden onChange={(e) => { handleFileSet(e) }} />
 
               </Button>
-              <Button variant="contained" className='subButton' endIcon={<TbSend />} onClick={updateImage}>update</Button>
+              <Button variant="contained" className='subButton' endIcon={<TbSend />} onClick={updateImage} >update</Button>
             </div>
           </div>
         </div>

@@ -61,9 +61,8 @@ const Login = () => {
                     setLoading(false);
                     navigate('/');
                 }, 2000);
-
-
             }
+
         } catch (error) {
             setLoading(false);
             const errMsg = error?.response?.data?.message;
@@ -71,8 +70,8 @@ const Login = () => {
             toast.error(`${errMsg}`);
         }
 
-
     }
+
     const handleSignIn = () => {
         login();
     }

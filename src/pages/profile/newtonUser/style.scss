@@ -15,7 +15,7 @@
         min-height: 90vh;
     }
 
-    @include xl {
+    @include lg {
         justify-content: start;
         gap: 20%;
     }
