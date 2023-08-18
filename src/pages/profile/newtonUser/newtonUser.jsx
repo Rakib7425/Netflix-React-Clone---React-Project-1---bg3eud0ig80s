@@ -92,6 +92,8 @@ const NewtonUser = ({ userData }) => {
 
           toast.success('Password changed Successfully!')
         } else if (!response) {
+          setCurrPassword('');
+          setConNewPassword('');
           toast.success(response.message);
         }
         console.log(response);
