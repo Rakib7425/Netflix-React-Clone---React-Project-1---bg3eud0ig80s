@@ -57,7 +57,8 @@ const NewtonUser = ({ userData }) => {
   let headersList = {
     "projectId": projectId,
     "Authorization": token,
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
+    // "Content-Type": "multipart/form-data",
   }
 
 
@@ -106,28 +107,31 @@ const NewtonUser = ({ userData }) => {
     try {
       console.log('submitting');
       // const formData = new FormData();
-      // formData.append('png', userImg); // Assuming you want to send the selected image
-      // console.log(formData);
+      // formData.append('image', userImg); // Assuming you want to send the selected image
+      // console.log(formData.append('image', userImg));
+      // console.log(userImg);
 
-      const response = await axios.patch(
-        'https://academics.newtonschool.co/api/v1/user/updateProfileImage', userImg, {
-        headers: {
-          projectId: projectId,
-          Authorization: token,
-          ContentType: 'multipart/form-data',
-        },
-        // data: {
-        //   data: userImg,
-        // },
-      }
-      );
+      // const response = await axios.patch(
+      //   'https://academics.newtonschool.co/api/v1/user/updateProfileImage', formData, {
+      //   headers: {
+      //     projectId: projectId,
+      //     Authorization: token,
+      //     ContentType: 'multipart/form-data',
+      //   },
+      //   data: {
+      //     profileImage: userImg,
+      //   },
+      // }
+      // );
+      // console.log(response);
 
-      if (response.data.success) {
-        // Update user's image URL in state or do any necessary updates
-        toast.success('Profile image updated successfully!');
-      } else {
-        toast.error('Failed to update profile image.');
-      }
+
+      // if (response.data.success) {
+      //   // Update user's image URL in state or do any necessary updates
+      //   toast.success('Profile image updated successfully!');
+      // } else {
+      //   toast.error('Failed to update profile image.');
+      // }
     } catch (error) {
       toast.error('An error occurred while updating profile image.');
       console.error(error);
@@ -188,8 +192,8 @@ const NewtonUser = ({ userData }) => {
                 variant="filled"
               /> */}
 
-              <h3 >My Name: {name}</h3>
-              <h3 >My Email: {email}</h3>
+              {/* <h3 >My Name: {name}</h3>
+              <h3 >My Email: {email}</h3> */}
 
               <TextField id="currentPassword" type='text' label="Current Password" variant="filled"
                 value={currPassword}

@@ -4,7 +4,8 @@
     margin-top: 30px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    min-width: 100%;
     flex-direction: column;
     color: white;
 
@@ -16,7 +17,7 @@
     }
 
     @include lg {
-        justify-content: start;
+        // justify-content: start;
         gap: 20%;
     }
 }
