@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './style.scss';
 import Img from '../../../components/lazyLoadImage/Img';
 import { Button, Stack, TextField, inputLabelClasses } from '@mui/material';
@@ -13,10 +13,15 @@ import { getUser } from '../../../store/userSlice';
 
 const FirebaseUser = ({ userData }) => {
 
-    const [userImg, setUserImg] = useState(userData?.photoURL);
+    const [userImg, setUserImg] = useState('');
     const [userName, setUserName] = useState(userData?.displayName);
     const [email, setEmail] = useState('');
 
+
+
+    useEffect(() => {
+        setUserImg(userData?.photoURL)
+    }, [userData]);
 
     const handleFileSet = (e) => {
         // setUserImg(e.target.files[0]);
@@ -33,7 +38,7 @@ const FirebaseUser = ({ userData }) => {
             }
         }
     }
-    console.log(userData);
+    console.log(userData?.photoURL);
 
     return (
         <>

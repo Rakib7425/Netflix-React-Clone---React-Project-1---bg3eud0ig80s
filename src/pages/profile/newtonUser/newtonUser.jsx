@@ -15,7 +15,8 @@ import { getUser } from '../../../store/userSlice';
 
 const NewtonUser = ({ userData }) => {
 
-  const [userImg, setUserImg] = useState(avatar);
+  const [userImgData, setUserImgData] = useState('');
+  const [userImg, setUserImg] = useState(userData?.data.profileImage ? userData?.data.profileImage : avatar);
   const [name, setName] = useState(userData?.data?.name);
   const [email, setEmail] = useState(userData?.data?.email);
   const [currPassword, setCurrPassword] = useState('');
@@ -36,10 +37,8 @@ const NewtonUser = ({ userData }) => {
 
   // }, [token]);
 
-  const handleFileSet = (e) => {
-    // setUserImg(e.target.files[0]);
-    setUserImg(URL.createObjectURL(e.target.files[0]));
-  };
+
+
   const sxx = () => {
     return {
       // set the color of the label when not shrinked
@@ -58,7 +57,6 @@ const NewtonUser = ({ userData }) => {
     "projectId": projectId,
     "Authorization": token,
     "Content-Type": "application/json",
-    // "Content-Type": "multipart/form-data",
   }
 
 
@@ -102,28 +100,39 @@ const NewtonUser = ({ userData }) => {
 
   }
 
+
+  const handleFileSet = (e) => {
+    const selectedFile = e.target.files[0];
+    setUserImgData(selectedFile)
+    setUserImg(URL.createObjectURL(selectedFile));
+
+  };
+
+
+
   const updateImage = async () => {
 
-    try {
-      console.log('submitting');
-      // const formData = new FormData();
-      // formData.append('image', userImg); // Assuming you want to send the selected image
-      // console.log(formData.append('image', userImg));
-      // console.log(userImg);
 
-      // const response = await axios.patch(
-      //   'https://academics.newtonschool.co/api/v1/user/updateProfileImage', formData, {
-      //   headers: {
-      //     projectId: projectId,
-      //     Authorization: token,
-      //     ContentType: 'multipart/form-data',
-      //   },
-      //   data: {
-      //     profileImage: userImg,
-      //   },
-      // }
-      // );
-      // console.log(response);
+    try {
+
+      // Create a new FormData and append the selected file
+      const formData = new FormData();
+      formData.append("profileImage", userImgData, userImgData.name);
+      console.log('submitting');
+
+      const response = await axios.patch(
+        "https://academics.newtonschool.co/api/v1/user/updateProfileImage",
+        formData,
+        {
+          headers: {
+            projectId: projectId,
+            Authorization: token,
+            // No need for ContentType header here
+          },
+        }
+      );
+
+      console.log(response);
 
 
       // if (response.data.success) {
