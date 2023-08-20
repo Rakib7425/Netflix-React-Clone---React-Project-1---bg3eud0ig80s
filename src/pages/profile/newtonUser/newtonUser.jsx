@@ -118,7 +118,6 @@ const NewtonUser = ({ userData }) => {
       // Create a new FormData and append the selected file
       const formData = new FormData();
       formData.append("profileImage", userImgData, userImgData.name);
-      console.log('submitting');
 
       const response = await axios.patch(
         "https://academics.newtonschool.co/api/v1/user/updateProfileImage",
@@ -132,17 +131,12 @@ const NewtonUser = ({ userData }) => {
         }
       );
 
-      console.log(response);
-
-
-      // if (response.data.success) {
-      //   // Update user's image URL in state or do any necessary updates
-      //   toast.success('Profile image updated successfully!');
-      // } else {
-      //   toast.error('Failed to update profile image.');
-      // }
+      if (response.status === 200) {
+        console.log(response);
+        toast.success('Profile image updated successfully!!')
+      }
     } catch (error) {
-      toast.error('An error occurred while updating profile image.');
+      toast.error('Failed to update profile image!');
       console.error(error);
     }
   };
