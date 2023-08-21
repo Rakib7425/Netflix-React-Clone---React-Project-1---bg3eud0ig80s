@@ -11,16 +11,26 @@ import { toast } from 'react-toastify';
 import { useSelector, useDispatch } from 'react-redux';
 import { getUser } from '../../../store/userSlice';
 
+
+import { getAuth, updateProfile } from "firebase/auth";
+
+
+
 const FirebaseUser = ({ userData }) => {
 
-    const [userImg, setUserImg] = useState('');
+    const [userImg, setUserImg] = useState(userData?.photoURL);
     const [userName, setUserName] = useState(userData?.displayName);
-    const [email, setEmail] = useState('');
+    const [email, setEmail] = useState(userData?.email);
 
-
+    const auth = getAuth();
+    console.log(auth);
+    const user = auth.currentUser;
 
     useEffect(() => {
-        setUserImg(userData?.photoURL)
+        setUserImg(userData?.photoURL);
+        setUserName(userData?.displayName)
+        setEmail(userData?.email)
+
     }, [userData]);
 
     const handleFileSet = (e) => {
@@ -38,15 +48,44 @@ const FirebaseUser = ({ userData }) => {
             }
         }
     }
-    console.log(userData?.photoURL);
+    const updateProfileImage = () => {
+        updateProfile(user, {
+            photoURL: userImg
+        }).then(() => {
+            // Profile updated!
+            toast.success('Profile image updated!');
+            console.log("Profile updated!");
+        }).catch((error) => {
+
+            toast.error('Some error occurred!');
+            console.error("Some error occurred!");
+            // An error occurred
+            // ...
+        });
+    }
+    const updateProfileData = () => {
+        updateProfile(user, {
+            displayName: name,
+            email: email,
+        }).then(() => {
+            // Profile updated!
+            toast.success('Profile updated!');
+
+            console.log("Profile updated!");
+        }).catch((error) => {
+            // An error occurred
+            toast.error('Some error occurred!');
+            console.error("Some error occurred!");
+        });
+    }
 
     return (
         <>
-            <div className="profile_headers">
+            <div className="profile_headerss">
 
-                <div className="left">
+                <div className="leftt">
                     <h3>Photo</h3>
-                    <div className="photoContent">
+                    <div className="photoContentt">
                         <div >
                             <Img className='userPhoto'
                                 id='output'
@@ -67,28 +106,40 @@ const FirebaseUser = ({ userData }) => {
                                 <input type="file" accept=".jpeg, .jpg, .png, .ico" hidden onChange={(e) => { handleFileSet(e) }} />
 
                             </Button>
-                            <Button variant="contained" className='subButton' endIcon={<TbSend />} >update</Button>
+                            <Button variant="contained" className='subButton' endIcon={<TbSend />} onClick={updateProfileImage}>update</Button>
                         </div>
                     </div>
                 </div>
-                <div className="middle">
+                {/* <div className="middle">
                     <h3> User Settings</h3>
                     <div className="userSettings">
-                        <TextField id="uname" type='text' label="Name" variant="filled"
-                            value={userName}
-                            onChange={(e) => setUserName(e.target.value)}
-                            InputLabelProps={{ sx: sxx() }}
-                        />
+                        <Stack spacing={6.8} width={300}>
+                            <TextField id="namee" type='text' label="Name" variant="filled"
+                                value={userName}
+                                onChange={(e) => setUserName(e.target.value)}
+                                InputLabelProps={{ sx: sxx() }}
+                            />
+                            <TextField id="emaill" type='email' label="Email" variant="filled"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                InputLabelProps={{ sx: sxx() }}
+                            />
+                            <Button variant="contained" className='subButton' endIcon={<TbSend />} onClick={updateProfileData}>update profile</Button>
+                        </Stack>
                     </div>
-                </div>
-                <div className="right">
+                </div> */}
+
+                {/* <div className="right">
                     <h3>Update password</h3>
+                </div> */}
+
+                <div className="note">
+                    <h3>Note: After update profile 'Relogin' required for reflect in the page.(Logout & Login again). </h3>
                 </div>
             </div>
-            <div className="profile_content">
 
 
-            </div>
+
         </>
     )
 }
