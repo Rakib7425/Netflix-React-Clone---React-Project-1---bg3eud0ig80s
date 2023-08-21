@@ -50,7 +50,7 @@ const NewtonUser = ({ userData }) => {
     }
   }
 
-  console.log(userData);
+  // console.log(userData);
 
 
   let headersList = {

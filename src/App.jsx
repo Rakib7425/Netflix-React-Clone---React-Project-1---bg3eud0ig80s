@@ -19,6 +19,7 @@ import Signup from "./pages/signup/Signup";
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/ReactToastify.min.css";
 import Profile from "./pages/profile/Profile";
+import ExplorePlans from "./pages/explorePlans/ExplorePlans";
 
 function App() {
     const dispatch = useDispatch();
@@ -77,6 +78,7 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/get-started" element={<GetStarted />} />
+                <Route path="/explore-plans" element={<ExplorePlans />} />
 
                 <Route path="/user/mylist" element={<Mylist />} />
                 <Route path="/user/profile" element={<Profile />} />

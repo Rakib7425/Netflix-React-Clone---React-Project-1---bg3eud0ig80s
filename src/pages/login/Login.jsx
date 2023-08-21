@@ -53,7 +53,7 @@ const Login = () => {
             let response = await axios.request(reqOptions);
             if (response.status === 200) {
 
-                console.log(response);
+                // console.log(response);
                 setUserData(response);
                 toast.success('🦄 Successfully logged in!');
 

@@ -75,6 +75,8 @@ const Header = () => {
             navigate("user/mylist");
         } else if (type === "profile") {
             navigate("user/profile");
+        } else if (type === "explore-plans") {
+            navigate("explore-plans");
         }
         setMobileMenu(false);
     };
@@ -106,6 +108,7 @@ const Header = () => {
                 {userDetails?.data || userDetails?.user?.displayName ?
 
                     <ul className="menuItems">
+
                         <li
                             className="menuItem"
                             onClick={() => navigationHandler("movie")}
@@ -122,15 +125,14 @@ const Header = () => {
                         <li className="menuItem" onClick={() => navigationHandler("mylist")}>
                             <span>My List</span>
                         </li>
-                        {/* : ''
-                    } */}
+                        <li className="menuItem" onClick={() => navigationHandler("explore-plans")}>
+                            <span>Explore Plans</span>
+                        </li>
 
                         {/* {userDetails?.data || userDetails?.user?.displayName ? */}
                         <li className="menuItem" onClick={() => navigationHandler("profile")}>
-                            <span>My Profile</span>
+                            <span>Profile</span>
                         </li>
-                        {/* : ''
-                    } */}
                         <li className="menuItem">
                             <HiOutlineSearch onClick={openSearch} />
                         </li>
@@ -144,14 +146,19 @@ const Header = () => {
                                 </Link>
                             }
                         </li>
+
                     </ul>
                     :
                     <ul className="menuItems">
+                        <li className="menuItem" onClick={() => navigationHandler("explore-plans")}>
+                            <span>Explore Plans</span>
+                        </li>
                         <li className="menuItem">
                             <Link to={'/login'} >
                                 <button className="login-btn">Sign In</button>
                             </Link>
                         </li>
+
                     </ul>
                 }
                 <div className="mobileMenuItems">

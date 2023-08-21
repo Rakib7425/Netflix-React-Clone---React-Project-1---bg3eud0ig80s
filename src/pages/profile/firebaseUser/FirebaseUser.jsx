@@ -23,7 +23,7 @@ const FirebaseUser = ({ userData }) => {
     const [email, setEmail] = useState(userData?.email);
 
     const auth = getAuth();
-    console.log(auth);
+    // console.log(auth);
     const user = auth.currentUser;
 
     useEffect(() => {
