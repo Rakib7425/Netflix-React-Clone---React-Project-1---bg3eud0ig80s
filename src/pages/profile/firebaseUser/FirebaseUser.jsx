@@ -110,24 +110,26 @@ const FirebaseUser = ({ userData }) => {
                         </div>
                     </div>
                 </div>
-                {/* <div className="middle">
+                <div className="middle">
                     <h3> User Settings</h3>
                     <div className="userSettings">
-                        <Stack spacing={6.8} width={300}>
+                        <Stack spacing={4} width={300}>
                             <TextField id="namee" type='text' label="Name" variant="filled"
                                 value={userName}
+                                disabled
                                 onChange={(e) => setUserName(e.target.value)}
                                 InputLabelProps={{ sx: sxx() }}
                             />
                             <TextField id="emaill" type='email' label="Email" variant="filled"
                                 value={email}
+                                disabled
                                 onChange={(e) => setEmail(e.target.value)}
                                 InputLabelProps={{ sx: sxx() }}
                             />
-                            <Button variant="contained" className='subButton' endIcon={<TbSend />} onClick={updateProfileData}>update profile</Button>
+                            <Button variant="contained" disabled className='subButton' endIcon={<TbSend />} onClick={updateProfileData}>update profile</Button>
                         </Stack>
                     </div>
-                </div> */}
+                </div>
 
                 {/* <div className="right">
                     <h3>Update password</h3>

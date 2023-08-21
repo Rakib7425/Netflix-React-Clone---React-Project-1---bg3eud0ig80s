@@ -228,6 +228,9 @@ const NewtonUser = ({ userData }) => {
           </div>
         </div>
       </div>
+      <div className="note">
+        <h3>Note: After update profile 'Relogin' required for reflect in the page.(Logout & Login again). </h3>
+      </div>
     </>
   )
 }

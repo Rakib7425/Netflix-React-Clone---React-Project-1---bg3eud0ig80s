@@ -5,7 +5,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 100%;
+    min-width: 90%;
     flex-direction: column;
     color: white;
 
@@ -13,12 +13,12 @@
     @include md {
         flex-direction: row;
         align-items: start;
-        min-height: 90vh;
+        min-height: 50vh;
     }
 
     @include lg {
         // justify-content: start;
-        gap: 20%;
+        gap: 10%;
     }
 }
 
