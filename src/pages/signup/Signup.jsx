@@ -67,7 +67,7 @@ const Signup = () => {
 
                 setTimeout(() => {
                     setLoading(false);
-                    navigate('/');
+                    navigate('/explore-plans');
                 }, 2000)
             }
 
@@ -80,7 +80,7 @@ const Signup = () => {
     }
 
     const handleSignup = () => {
-        if ((name.length > 5 && email) && (password === cPassword)) {
+        if ((name.length > 0 && email) && (password === cPassword)) {
             signup();
 
         } else {
@@ -115,7 +115,7 @@ const Signup = () => {
 
                     <div className="formDiv">
                         <div className="form">
-                            <p className='para1'>Step: 1 of 3</p>
+                            <p className='para1'>Step: 1 of 2</p>
                             <p className="para2">
                                 Joining Netflix is easy.
                             </p>

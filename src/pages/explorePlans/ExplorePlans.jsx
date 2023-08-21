@@ -14,7 +14,7 @@ const plans = [
     {
         name: 'Basic Plan',
         price: '$9.99/month',
-        description: 'Access to basic features and content and something extra.'
+        description: 'Access to basic features and something extra.'
     },
     {
         name: 'Standard Plan',
