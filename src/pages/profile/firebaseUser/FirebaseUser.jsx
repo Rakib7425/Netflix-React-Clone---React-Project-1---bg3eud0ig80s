@@ -110,7 +110,7 @@ const FirebaseUser = ({ userData }) => {
                         </div>
                     </div>
                 </div>
-                <div className="middle">
+                <div className="middlee">
                     <h3> User Settings</h3>
                     <div className="userSettings">
                         <Stack spacing={4} width={300}>
