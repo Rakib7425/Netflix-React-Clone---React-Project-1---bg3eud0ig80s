@@ -14,7 +14,7 @@ import Explore from "./pages/explore/Explore";
 import PageNotFound from "./pages/404/PageNotFound";
 import Login from "./pages/login/Login";
 import Mylist from "./pages/mylist/Mylist";
-import GetStarted from "./pages/getStarted/GetStarted";
+// import GetStarted from "./pages/getStarted/GetStarted";
 import Signup from "./pages/signup/Signup";
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/ReactToastify.min.css";
@@ -27,6 +27,7 @@ function App() {
     const { url } = useSelector((state) => state.home);
     // console.log(url);
     const { userDetails } = useSelector((state) => state?.user);
+
     useEffect(() => {
         if (userDetails) {
             fetchApiConfig();
@@ -71,13 +72,14 @@ function App() {
     return (
         <main>
             <Header />
+
             <ToastContainer theme="dark" position="top-right"
                 autoClose={2000} />
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
-                <Route path="/get-started" element={<GetStarted />} />
+                {/* <Route path="/get-started" element={<GetStarted />} /> */}
                 <Route path="/explore-plans" element={<ExplorePlans />} />
 
                 <Route path="/user/mylist" element={<Mylist />} />
@@ -88,6 +90,7 @@ function App() {
                 <Route path="/explore/:mediaType" element={<Explore />} />
                 <Route path="*" element={<PageNotFound />} />
             </Routes>
+
             <Footer />
         </main>
 

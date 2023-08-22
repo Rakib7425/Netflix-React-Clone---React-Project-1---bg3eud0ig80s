@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
     FaFacebookF,
     FaInstagram,
@@ -9,6 +10,7 @@ import {
 import ContentWrapper from "../contentWrapper/ContentWrapper";
 
 import "./style.scss";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
     return (
@@ -30,18 +32,18 @@ const Footer = () => {
                     esse cillum dolore eu fugiat nulla pariatur.
                 </div>
                 <div className="socialIcons">
-                    <span className="icon">
+                    <Link className="icon">
                         <FaFacebookF />
-                    </span>
-                    <span className="icon">
+                    </Link>
+                    <Link className="icon">
                         <FaInstagram />
-                    </span>
-                    <span className="icon">
+                    </Link>
+                    <Link className="icon">
                         <FaTwitter />
-                    </span>
-                    <span className="icon">
+                    </Link>
+                    <Link className="icon">
                         <FaLinkedin />
-                    </span>
+                    </Link>
                 </div>
             </ContentWrapper>
         </footer>
