@@ -67,7 +67,8 @@ const NewtonUser = ({ userData }) => {
       "name": name,
       "email": email,
       "passwordCurrent": currPassword,
-      "password": conNewPassword
+      "password": conNewPassword,
+      "appType": 'ott'
     });
 
     let reqOptions = {
