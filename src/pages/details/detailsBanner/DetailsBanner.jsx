@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import dayjs from "dayjs";
@@ -14,6 +14,13 @@ import PosterFallback from "../../../assets/no-poster.png";
 import { PlayIcon } from "../Playbtn";
 import VideoPopup from "../../../components/videoPopup/VideoPopup";
 import { MdOutlinePlaylistAdd, MdOutlinePlaylistAddCheck } from 'react-icons/md'
+
+
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../../../firebase/firebase";
+
+import { toast } from "react-toastify";
+
 const DetailsBanner = ({ video, crew }) => {
     const [show, setShow] = useState(false);
     const [videoId, setVideoId] = useState(null);
@@ -21,7 +28,15 @@ const DetailsBanner = ({ video, crew }) => {
     const { mediaType, id } = useParams();
     const { data, loading } = useFetch(`/${mediaType}/${id}`);
 
-    const { url } = useSelector((state) => state.home);
+    const { url } = useSelector((state) => state?.home);
+
+    // useEffect(() => {
+
+    const authUser = useSelector((state) => state?.user?.userDetails?.user);
+    const newtonAuthUser = useSelector((state) => state?.user?.userDetails?.data);
+
+    // }, [])
+
 
     const _genres = data?.genres?.map((g) => g.id);
 
@@ -35,8 +50,49 @@ const DetailsBanner = ({ video, crew }) => {
         const minutes = totalMinutes % 60;
         return `${hours}h${minutes > 0 ? ` ${minutes}m` : ""}`;
     };
-    const handleAddToWatchList = () => {
+
+    const handleAddToWatchList = async () => {
         console.log('This functionality is pending to done');
+        // console.log(authUser);
+        // console.log(data.title);
+
+        console.log(data);
+
+        try {
+            if (authUser) {
+                const docRef = await addDoc(collection(db, 'netflix'), {
+                    email: authUser.email,
+                    movieId: data.id,
+                    original_language: data.original_language,
+                    overview: data.overview,
+                    owner: authUser.uid,
+                    ownerName: authUser.displayName,
+                    poster_path: data.poster_path,
+                    backdrop_path: data.backdrop_path,
+                    title: data?.title || data?.original_name || data.name,
+                    vote_average: data.vote_average,
+                    posterUrl: data.poster_path,
+                    release_date: data.release_date,
+                    watched: false,
+                })
+
+                toast.success(`${data.title} - Successfully Booked!`, { icon: "🚀" })
+                // console.log(docRef.id);
+
+                // if (docRef) {
+                //     navigate('/user/bookings')
+                // }
+
+            } else if (newtonAuthUser) {
+                console.log("Hehehee , Newton User 😂😂");
+            }
+
+
+
+
+        } catch (error) {
+            console.error("Error from handleAddToWatchList fn: ", error);
+        }
     };
 
     return (
