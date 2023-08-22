@@ -53,14 +53,15 @@ const Mylist = () => {
                 </h1>
                 <h1 style={{ color: 'red' }}>Working on this Page</h1>
             </div>
+
             <div className="listContent">
                 {
                     data && data.map((item) => {
                         return (
-                            <section key={item.movieId}>
+                            <section className='cards' key={item.movieId}>
                                 <MovieCard data={item} fromSearch={item.movieId} mediaType={'tv'} />
                             </section>
-                        )
+                        );
                     })
                 }
             </div>
