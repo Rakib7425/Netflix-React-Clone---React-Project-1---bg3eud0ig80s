@@ -37,7 +37,8 @@ const Login = () => {
 
     let bodyContent = JSON.stringify({
         "email": email,
-        "password": password
+        "password": password,
+        "appType": 'ott'
     });
 
     let reqOptions = {
