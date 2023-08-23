@@ -8,27 +8,27 @@ import ContentWrapper from '../../components/contentWrapper/ContentWrapper';
 const plans = [
     {
         name: 'Free',
-        price: '$0.00/month',
+        price: '₹0.00/month',
         description: 'Access to basic features and content.'
     },
     {
         name: 'Basic Plan',
-        price: '$9.99/month',
+        price: '₹199/month',
         description: 'Access to basic features and something extra.'
     },
     {
         name: 'Standard Plan',
-        price: '$14.99/month',
+        price: '₹399/month',
         description: 'HD streaming and access to more content.'
     },
     {
         name: 'Premium Plan',
-        price: '$19.99/month',
+        price: '₹599/month',
         description: 'Ultra HD streaming and access to all content two user can use at one time.'
     },
     {
         name: 'Family Plan',
-        price: '$29.99/month',
+        price: '₹799/month',
         description: 'Ultra HD streaming and access to all content six user can use at one time.'
     },
 ];
