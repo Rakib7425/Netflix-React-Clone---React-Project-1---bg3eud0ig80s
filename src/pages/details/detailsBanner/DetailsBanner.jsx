@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import dayjs from "dayjs";
 
@@ -30,12 +30,9 @@ const DetailsBanner = ({ video, crew }) => {
 
     const { url } = useSelector((state) => state?.home);
 
-    // useEffect(() => {
-
     const authUser = useSelector((state) => state?.user?.userDetails?.user);
     const newtonAuthUser = useSelector((state) => state?.user?.userDetails?.data);
-
-    // }, [])
+    const navigate = useNavigate()
 
 
     const _genres = data?.genres?.map((g) => g.id);
@@ -52,7 +49,6 @@ const DetailsBanner = ({ video, crew }) => {
     };
 
     const handleAddToWatchList = async () => {
-        console.log('This functionality is pending to done');
         // console.log(authUser);
         // console.log(data.title);
 
@@ -74,14 +70,13 @@ const DetailsBanner = ({ video, crew }) => {
                     posterUrl: data.poster_path,
                     release_date: data.release_date || '2023-07-19',
                     watched: false,
-                })
+                });
 
-                toast.success(`${data?.title || data?.original_name || data?.name} - Successfully Booked!`, { icon: "🚀" })
-                // console.log(docRef.id);
-
-                // if (docRef) {
-                //     navigate('/user/bookings')
-                // }
+                if (docRef) {
+                    // console.log(docRef.id);
+                    toast.success(`${data?.title || data?.original_name || data?.name} - Successfully Booked!`, { icon: "🚀" })
+                    navigate('/user/mylist');
+                }
 
             } else if (newtonAuthUser) {
                 console.log("Hehehee , Newton User 😂😂");

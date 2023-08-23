@@ -17,11 +17,24 @@
 
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 5px;
-    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+
+    .movieCard {
+        width: 90%;
+    }
 
     @include md {
+        flex-direction: row;
         min-height: 500px;
+        justify-content: start;
+        gap: 18px;
+        flex-wrap: wrap;
+
+        .movieCard {
+            width: 18.4%;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
     }
 }
