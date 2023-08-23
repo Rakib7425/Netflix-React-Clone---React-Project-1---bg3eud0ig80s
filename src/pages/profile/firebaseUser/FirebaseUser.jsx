@@ -18,7 +18,7 @@ import { getAuth, updateProfile } from "firebase/auth";
 
 const FirebaseUser = ({ userData }) => {
 
-    const [userImg, setUserImg] = useState(userData?.photoURL);
+    const [userImg, setUserImg] = useState(userData?.photoURL || avatar);
     const [userName, setUserName] = useState(userData?.displayName);
     const [email, setEmail] = useState(userData?.email);
 

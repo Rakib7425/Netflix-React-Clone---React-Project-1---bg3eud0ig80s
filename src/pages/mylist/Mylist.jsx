@@ -7,6 +7,7 @@ import { where, query, deleteDoc, updateDoc, doc, collection, getDocs } from 'fi
 import { db } from "../../firebase/firebase";
 import Spinner from '../../components/spinner/Spinner'
 import './style.scss'
+import Card from './Card/Card';
 
 
 const Mylist = () => {
@@ -62,9 +63,9 @@ const Mylist = () => {
                 {isLoading ? <Spinner /> : data.length < 1 ? <h1 className='emptyMsg'> Hey {firebaseUser?.displayName} Your list is Empty!</h1> :
                     data && data.map((item) => {
                         return (
-                            // <section className='cards' key={item.id}>
-                            <MovieCard key={item.id} data={item} fromSearch={item} mediaType={'tv'} />
-                            // </section>
+
+                            // <MovieCard key={item.id} data={item} fromSearch={item} mediaType={'tv'} />
+                            <Card key={item.id} data={item} />
                         );
                     })
                 }
