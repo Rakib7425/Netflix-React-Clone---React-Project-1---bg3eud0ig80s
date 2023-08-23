@@ -93,7 +93,7 @@ function App() {
                 <Route path="*" element={<PageNotFound />} />
             </Routes>
             <Footer />
-            <BackToUp>Top</BackToUp>
+            <BackToUp size={40}>Top</BackToUp>
         </main>
 
     );
