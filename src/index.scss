@@ -47,11 +47,11 @@ body {
 
     body::-webkit-scrollbar-thumb {
         border-radius: 10px;
-        background: rgb(171, 11, 191);
-        background: -moz-linear-gradient(248deg, rgba(171, 11, 191, 1) 0%, rgba(41, 219, 35, 1) 35%, rgba(70, 148, 151, 1) 72%, rgba(145, 2, 210, 1) 91%, rgba(0, 212, 255, 1) 100%);
-        background: -webkit-linear-gradient(248deg, rgba(171, 11, 191, 1) 0%, rgba(41, 219, 35, 1) 35%, rgba(70, 148, 151, 1) 72%, rgba(145, 2, 210, 1) 91%, rgba(0, 212, 255, 1) 100%);
-        background: linear-gradient(248deg, rgba(171, 11, 191, 1) 0%, rgba(41, 219, 35, 1) 35%, rgba(70, 148, 151, 1) 72%, rgba(145, 2, 210, 1) 91%, rgba(0, 212, 255, 1) 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ab0bbf", endColorstr="#00d4ff", GradientType=1);
+        background: rgb(112, 25, 122);
+        background: -moz-linear-gradient(205deg, rgba(112, 25, 122, 1) 0%, rgba(5, 76, 197, 1) 20%, rgba(145, 2, 210, 1) 37%, rgba(105, 81, 178, 1) 44%, rgba(70, 148, 151, 1) 59%, rgba(145, 2, 210, 1) 79%, rgba(0, 212, 255, 1) 98%);
+        background: -webkit-linear-gradient(205deg, rgba(112, 25, 122, 1) 0%, rgba(5, 76, 197, 1) 20%, rgba(145, 2, 210, 1) 37%, rgba(105, 81, 178, 1) 44%, rgba(70, 148, 151, 1) 59%, rgba(145, 2, 210, 1) 79%, rgba(0, 212, 255, 1) 98%);
+        background: linear-gradient(205deg, rgba(112, 25, 122, 1) 0%, rgba(5, 76, 197, 1) 20%, rgba(145, 2, 210, 1) 37%, rgba(105, 81, 178, 1) 44%, rgba(70, 148, 151, 1) 59%, rgba(145, 2, 210, 1) 79%, rgba(0, 212, 255, 1) 98%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#70197a", endColorstr="#00d4ff", GradientType=1);
         scroll-behavior: smooth;
 
     }

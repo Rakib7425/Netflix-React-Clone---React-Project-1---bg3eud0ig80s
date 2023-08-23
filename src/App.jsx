@@ -21,6 +21,8 @@ import "react-toastify/ReactToastify.min.css";
 import Profile from "./pages/profile/Profile";
 import ExplorePlans from "./pages/explorePlans/ExplorePlans";
 
+import BackToUp from '@uiw/react-back-to-top';
+
 function App() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -90,8 +92,8 @@ function App() {
                 <Route path="/explore/:mediaType" element={<Explore />} />
                 <Route path="*" element={<PageNotFound />} />
             </Routes>
-
             <Footer />
+            <BackToUp>Top</BackToUp>
         </main>
 
     );

@@ -72,9 +72,9 @@ const DetailsBanner = ({ video, crew }) => {
                     watched: false,
                 });
 
-                if (docRef) {
+                if (docRef.id) {
                     // console.log(docRef.id);
-                    toast.success(`${data?.title || data?.original_name || data?.name} - Successfully Booked!`, { icon: "🚀" })
+                    toast.success(`${data?.title || data?.original_name || data?.name} - Successfully Added!`, { icon: "🚀" })
                     navigate('/user/mylist');
                 }
 

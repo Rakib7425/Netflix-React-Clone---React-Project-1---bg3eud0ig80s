@@ -14,6 +14,7 @@
         "@emotion/styled": "^11.11.0",
         "@mui/material": "^5.14.4",
         "@reduxjs/toolkit": "^1.9.1",
+        "@uiw/react-back-to-top": "^1.2.3",
         "axios": "^1.2.2",
         "dayjs": "^1.11.7",
         "firebase": "^10.1.0",
