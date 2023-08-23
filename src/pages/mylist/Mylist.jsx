@@ -5,18 +5,20 @@ import MovieCard from '../../components/movieCard/MovieCard';
 import { useSelector } from 'react-redux';
 import { where, query, deleteDoc, updateDoc, doc, collection, getDocs } from 'firebase/firestore';
 import { db } from "../../firebase/firebase";
-
+import Spinner from '../../components/spinner/Spinner'
 import './style.scss'
 
 
 const Mylist = () => {
     const [data, setData] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     const newtonUser = useSelector((state) => state?.user?.userDetails?.data);
     const firebaseUser = useSelector((state) => state?.user?.userDetails?.user);
     // console.log(firebaseUser);
 
     const fetchMovieList = async (userId) => {
+        setIsLoading(true);
         try {
             const qry = query(collection(db, 'netflix'), where('owner', '==', userId));
             const querySnapshot = await getDocs(qry);
@@ -31,9 +33,11 @@ const Mylist = () => {
 
             setData(data);
             console.log(data);
+            setIsLoading(false);
 
         } catch (error) {
             console.error("Error From fetchMovieList function.", error);
+            setIsLoading(false);
         }
     };
 
@@ -55,7 +59,7 @@ const Mylist = () => {
             </div>
 
             <div className="listContent">
-                {
+                {isLoading ? <Spinner /> :
                     data && data.map((item) => {
                         return (
                             // <section className='cards' key={item.id}>
