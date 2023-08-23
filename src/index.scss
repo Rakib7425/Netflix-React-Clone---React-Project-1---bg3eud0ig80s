@@ -32,14 +32,27 @@ body {
     background-color: var(--black);
 }
 
+
 ::-webkit-scrollbar {
-    display: none;
+    width: 4px;
+    scroll-behavior: smooth;
+}
+
+body::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgb(171, 11, 191);
+    background: -moz-linear-gradient(248deg, rgba(171, 11, 191, 1) 0%, rgba(41, 219, 35, 1) 35%, rgba(70, 148, 151, 1) 72%, rgba(145, 2, 210, 1) 91%, rgba(0, 212, 255, 1) 100%);
+    background: -webkit-linear-gradient(248deg, rgba(171, 11, 191, 1) 0%, rgba(41, 219, 35, 1) 35%, rgba(70, 148, 151, 1) 72%, rgba(145, 2, 210, 1) 91%, rgba(0, 212, 255, 1) 100%);
+    background: linear-gradient(248deg, rgba(171, 11, 191, 1) 0%, rgba(41, 219, 35, 1) 35%, rgba(70, 148, 151, 1) 72%, rgba(145, 2, 210, 1) 91%, rgba(0, 212, 255, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ab0bbf", endColorstr="#00d4ff", GradientType=1);
+    scroll-behavior: smooth;
+
 }
 
 .skeleton {
     position: relative;
     overflow: hidden;
-    background-color: #7e1b50;
+    background-color: #480c75;
 
     &::after {
         position: absolute;
