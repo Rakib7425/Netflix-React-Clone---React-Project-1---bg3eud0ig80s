@@ -58,9 +58,9 @@ const Mylist = () => {
                 {
                     data && data.map((item) => {
                         return (
-                            <section className='cards' key={item.movieId}>
-                                <MovieCard data={item} fromSearch={item.movieId} mediaType={'tv'} />
-                            </section>
+                            // <section className='cards' key={item.id}>
+                            <MovieCard key={item.id} data={item} fromSearch={item} mediaType={'tv'} />
+                            // </section>
                         );
                     })
                 }

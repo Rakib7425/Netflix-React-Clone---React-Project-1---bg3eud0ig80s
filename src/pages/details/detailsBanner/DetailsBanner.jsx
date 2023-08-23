@@ -69,14 +69,14 @@ const DetailsBanner = ({ video, crew }) => {
                     ownerName: authUser.displayName,
                     poster_path: data.poster_path,
                     backdrop_path: data.backdrop_path,
-                    title: data?.title || data?.original_name || data.name,
+                    title: data?.title || data?.original_name || data?.name,
                     vote_average: data.vote_average,
                     posterUrl: data.poster_path,
-                    release_date: data.release_date,
+                    release_date: data.release_date || '2023-07-19',
                     watched: false,
                 })
 
-                toast.success(`${data.title} - Successfully Booked!`, { icon: "🚀" })
+                toast.success(`${data?.title || data?.original_name || data?.name} - Successfully Booked!`, { icon: "🚀" })
                 // console.log(docRef.id);
 
                 // if (docRef) {
