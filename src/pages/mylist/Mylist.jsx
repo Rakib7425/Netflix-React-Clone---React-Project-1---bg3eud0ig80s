@@ -59,7 +59,7 @@ const Mylist = () => {
             </div>
 
             <div className="listContent">
-                {isLoading ? <Spinner /> :
+                {isLoading ? <Spinner /> : data.length < 1 ? <h1 className='emptyMsg'> Hey {firebaseUser?.displayName} Your list is Empty!</h1> :
                     data && data.map((item) => {
                         return (
                             // <section className='cards' key={item.id}>

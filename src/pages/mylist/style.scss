@@ -20,6 +20,10 @@
     justify-content: center;
     flex-direction: column;
 
+    .emptyMsg {
+        text-align: center;
+    }
+
     .movieCard {
         width: 90%;
     }
