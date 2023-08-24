@@ -57,6 +57,7 @@ const Signup = () => {
             setLoading(true);
             let response = await axios.request(reqOptions);
             console.log(response);
+
             if (response) {
                 setUser(response);
                 console.log(response);
@@ -70,11 +71,11 @@ const Signup = () => {
                     setLoading(false);
                     navigate('/explore-plans');
                 }, 2000)
-            }
+            };
 
         } catch (error) {
             console.error(error);
-            toast.error('EmailId already registered!');
+            toast.error(`${error.message} OR EmailId already registered!`);
             setLoading(false);
         }
 

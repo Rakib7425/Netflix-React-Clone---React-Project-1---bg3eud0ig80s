@@ -66,7 +66,7 @@ const Login = () => {
 
         } catch (error) {
             setLoading(false);
-            const errMsg = error?.response?.data?.message;
+            const errMsg = error?.message;
             console.error(error, errMsg);
             toast.error(`${errMsg}`);
         }

@@ -13,7 +13,7 @@ const Card = ({ data }) => {
     const posterUrl = data.poster_path
         ? url.poster + data.poster_path
         : PosterFallback;
-        
+
     return (
         <div className="container">
             <div className="img-container">
@@ -22,7 +22,7 @@ const Card = ({ data }) => {
             <ul className="social-media">
 
                 <li><Link ><MdFileDownloadDone size={30} color='white' /></Link></li>
-                <li><Link ><MdDelete size={30} color='white' /></Link></li>
+                <li><Link ><MdDelete size={30} color='red' /></Link></li>
 
             </ul>
             <div className="user-info">
