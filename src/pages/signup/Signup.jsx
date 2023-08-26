@@ -16,7 +16,6 @@ import { getUser } from '../../store/userSlice'
 import Tudum from '../../components/tudum/Tudum';
 import { useDispatch } from 'react-redux';
 
-
 const Signup = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -79,7 +78,7 @@ const Signup = () => {
             setLoading(false);
         }
 
-    }
+    };
 
     const handleSignup = () => {
         if ((name.length > 0 && email) && (password === cPassword)) {
