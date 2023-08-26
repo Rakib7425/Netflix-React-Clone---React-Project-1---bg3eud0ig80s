@@ -94,8 +94,6 @@ const Header = () => {
 
     }
 
-
-
     return (
         <header className={`header ${mobileMenu ? "mobileView" : ""} ${show}`}>
             <ContentWrapper>
