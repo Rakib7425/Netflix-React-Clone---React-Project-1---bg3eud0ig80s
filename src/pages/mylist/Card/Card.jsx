@@ -4,7 +4,6 @@ import Img from '../../../components/lazyLoadImage/Img';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { MdDelete, MdFileDownloadDone } from 'react-icons/md';
-import ContentWrapper from '../../../components/contentWrapper/ContentWrapper';
 
 const Card = ({ data }) => {
 

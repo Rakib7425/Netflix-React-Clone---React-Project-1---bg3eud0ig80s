@@ -5,6 +5,9 @@ import { fetchDataFromApi } from "./utils/api";
 import { useSelector, useDispatch } from "react-redux";
 import { getApiConfiguration, getGenres } from "./store/homeSlice";
 
+import BackToUp from '@uiw/react-back-to-top';
+import { BiUpArrowCircle } from 'react-icons/bi';
+
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import Home from "./pages/home/Home";
@@ -21,7 +24,6 @@ import "react-toastify/ReactToastify.min.css";
 import Profile from "./pages/profile/Profile";
 import ExplorePlans from "./pages/explorePlans/ExplorePlans";
 
-import BackToUp from '@uiw/react-back-to-top';
 
 function App() {
     const dispatch = useDispatch();
@@ -93,7 +95,7 @@ function App() {
                 <Route path="*" element={<PageNotFound />} />
             </Routes>
             <Footer />
-            <BackToUp size={42}>Top</BackToUp>
+            <BackToUp size={42}>{<BiUpArrowCircle size={32} />}</BackToUp>
         </main>
 
     );
