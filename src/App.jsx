@@ -95,7 +95,7 @@ function App() {
                 <Route path="*" element={<PageNotFound />} />
             </Routes>
             <Footer />
-            <BackToUp size={42}>{<BiUpArrowCircle size={32} />}</BackToUp>
+            <BackToUp style={{ zIndex: "3" }} size={42}>{<BiUpArrowCircle size={32} />}</BackToUp>
         </main>
 
     );

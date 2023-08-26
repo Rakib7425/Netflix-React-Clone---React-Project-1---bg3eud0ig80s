@@ -18,7 +18,7 @@ const Card = ({ data }) => {
             <div className="img-container">
                 <Img src={posterUrl} alt="" />
             </div>
-            <ul className="social-media">
+            <ul className="option-icon">
 
                 <li><Link ><MdFileDownloadDone size={30} color='white' /></Link></li>
                 <li><Link ><MdDelete size={30} color='red' /></Link></li>

@@ -20,6 +20,7 @@
     justify-content: center;
     flex-direction: column;
 
+
     .emptyMsg {
         text-align: center;
         color: white;
@@ -35,7 +36,7 @@
     @include md {
         flex-direction: row;
         min-height: 500px;
-        justify-content: start;
+        justify-content: space-between;
         gap: 18px;
         flex-wrap: wrap;
 
