@@ -79,8 +79,6 @@ const DetailsBanner = ({ video, crew }) => {
             }
 
 
-
-
         } catch (error) {
             console.error("Error from handleAddToWatchList fn: ", error);
         }
