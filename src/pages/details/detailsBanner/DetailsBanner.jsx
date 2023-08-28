@@ -21,6 +21,7 @@ import { db } from "../../../firebase/firebase";
 import { toast } from "react-toastify";
 
 const DetailsBanner = ({ video, crew }) => {
+
     const [show, setShow] = useState(false);
     const [videoId, setVideoId] = useState(null);
 
