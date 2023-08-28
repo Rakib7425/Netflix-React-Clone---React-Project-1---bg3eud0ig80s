@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import dayjs from "dayjs";
-
 import "./style.scss";
 
 import ContentWrapper from "../../../components/contentWrapper/ContentWrapper";
@@ -49,10 +48,7 @@ const DetailsBanner = ({ video, crew }) => {
     };
 
     const handleAddToWatchList = async () => {
-        // console.log(authUser);
-        // console.log(data.title);
-
-        console.log(data);
+        // console.log(data);
 
         try {
             if (authUser) {
