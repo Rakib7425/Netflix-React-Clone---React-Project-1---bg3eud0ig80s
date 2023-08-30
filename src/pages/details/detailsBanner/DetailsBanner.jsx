@@ -14,7 +14,6 @@ import { PlayIcon } from "../Playbtn";
 import VideoPopup from "../../../components/videoPopup/VideoPopup";
 import { MdOutlinePlaylistAdd, MdOutlinePlaylistAddCheck } from 'react-icons/md'
 
-
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../../firebase/firebase";
 
