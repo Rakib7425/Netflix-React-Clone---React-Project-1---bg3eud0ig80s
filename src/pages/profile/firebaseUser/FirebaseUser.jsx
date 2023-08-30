@@ -60,7 +60,6 @@ const FirebaseUser = ({ userData }) => {
             toast.error('Some error occurred!');
             console.error("Some error occurred!");
             // An error occurred
-            // ...
         });
     }
     const updateProfileData = () => {
