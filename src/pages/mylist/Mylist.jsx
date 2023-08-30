@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import ContentWrapper from '../../components/contentWrapper/ContentWrapper';
-
-import MovieCard from '../../components/movieCard/MovieCard';
+// import MovieCard from '../../components/movieCard/MovieCard';
 import { useSelector } from 'react-redux';
 import { where, query, deleteDoc, updateDoc, doc, collection, getDocs } from 'firebase/firestore';
 import { db } from "../../firebase/firebase";
 import Spinner from '../../components/spinner/Spinner'
 import './style.scss'
 import Card from './Card/Card';
-
 
 const Mylist = () => {
     const [data, setData] = useState([]);
