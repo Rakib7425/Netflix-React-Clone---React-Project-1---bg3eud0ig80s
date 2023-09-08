@@ -32,7 +32,7 @@ const Mylist = () => {
             });
 
             setData(data);
-            console.log(data);
+            // console.log(data);
             setIsLoading(false);
 
         } catch (error) {

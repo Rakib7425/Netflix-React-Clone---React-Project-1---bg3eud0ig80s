@@ -46,9 +46,8 @@ const DetailsBanner = ({ video, crew }) => {
         const minutes = totalMinutes % 60;
         return `${hours}h${minutes > 0 ? ` ${minutes}m` : ""}`;
     };
-
     const handleAddToWatchList = async () => {
-        // console.log(data);
+        // console.log(mediaType);
 
         try {
             if (authUser) {
@@ -58,6 +57,7 @@ const DetailsBanner = ({ video, crew }) => {
                     original_language: data.original_language,
                     overview: data.overview,
                     owner: authUser.uid,
+                    mediaType: mediaType,
                     ownerName: authUser.displayName,
                     poster_path: data.poster_path,
                     backdrop_path: data.backdrop_path,

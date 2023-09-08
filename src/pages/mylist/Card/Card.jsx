@@ -18,13 +18,9 @@ const Card = ({ data, tempRender, setTempRender }) => {
         ? url.poster + data.poster_path
         : PosterFallback;
 
-
-
-
-
     const handleDelete = async (docId) => {
-        console.log(docId);
-        console.log(auth.currentUser);
+        // console.log(docId);
+        // console.log(auth.currentUser);
         try {
             await deleteDoc(doc(db, 'netflix', docId));
             setTempRender(tempRender + 1);
