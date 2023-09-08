@@ -37,7 +37,8 @@
     @include md {
         flex-direction: row;
         min-height: 500px;
-        justify-content: space-between;
+        // justify-content: space-between;
+        justify-content: start;
         gap: 18px;
         flex-wrap: wrap;
 

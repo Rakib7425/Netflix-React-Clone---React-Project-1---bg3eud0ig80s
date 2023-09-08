@@ -10,19 +10,16 @@ import { toast } from 'react-toastify';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-const Card = ({ data }) => {
+const Card = ({ data, tempRender, setTempRender }) => {
 
     const { url } = useSelector((state) => state.home);
     const navigate = useNavigate();
     const posterUrl = data.poster_path
         ? url.poster + data.poster_path
         : PosterFallback;
-    const [tempRender, setTempRender] = useState(0);
 
 
-    useEffect(() => {
-        data = data;
-    }, [tempRender])
+
 
 
     const handleDelete = async (docId) => {
@@ -47,11 +44,11 @@ const Card = ({ data }) => {
                 watched: true,
             });
             setTempRender(tempRender + 1);
-            toast.success(`Successfully Updated. Marked as Unwatched`);
+            toast.success(`Successfully Updated. Marked as Watched`);
 
         } catch (error) {
             toast.error(error);
-            console.error("Error From markAsUnWatched function.", error);
+            console.error("Error From markAsWatched function.", error);
         }
     };
 

@@ -11,6 +11,7 @@ import Card from './Card/Card';
 const Mylist = () => {
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [tempRender, setTempRender] = useState(0);
 
     const newtonUser = useSelector((state) => state?.user?.userDetails?.data);
     const firebaseUser = useSelector((state) => state?.user?.userDetails?.user);
@@ -45,7 +46,7 @@ const Mylist = () => {
             fetchMovieList(firebaseUser.uid);
         }
 
-    }, []);
+    }, [tempRender]);
 
 
     return (
@@ -63,7 +64,7 @@ const Mylist = () => {
                         return (
 
                             // <MovieCard key={item.id} data={item} fromSearch={item} mediaType={'tv'} />
-                            <Card key={item.id} data={item} />
+                            <Card key={item.id} data={item} tempRender={tempRender} setTempRender={setTempRender} />
                         );
                     })
                 }
