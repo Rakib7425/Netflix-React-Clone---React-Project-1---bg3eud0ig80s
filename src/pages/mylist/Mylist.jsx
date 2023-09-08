@@ -23,7 +23,7 @@ const Mylist = () => {
             const querySnapshot = await getDocs(qry);
             let data = [];
             querySnapshot.forEach((doc) => {
-                // console.log(doc.id, '=>>>>', doc.data());
+
                 if (!doc.data().watched) {
                     data.push({ ...doc.data(), id: doc.id })
                 }
@@ -57,7 +57,7 @@ const Mylist = () => {
                 <h1 style={{ color: 'red' }}>Working on this Page</h1>
             </div>
 
-            <div className="listContent">
+            <div className={`listContent ${data.length <= 3 ? 'listFlexStart' : ''}`}>
                 {isLoading ? <Spinner /> : data.length < 1 ? <h1 className='emptyMsg'> Hey {firebaseUser?.displayName} Your list is Empty!</h1> :
                     data && data.map((item) => {
                         return (

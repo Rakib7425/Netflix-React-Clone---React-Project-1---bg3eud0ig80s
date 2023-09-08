@@ -21,6 +21,7 @@
     flex-direction: column;
 
 
+
     .emptyMsg {
         text-align: center;
         color: white;
@@ -39,6 +40,10 @@
         justify-content: space-between;
         gap: 18px;
         flex-wrap: wrap;
+
+        &.listFlexStart {
+            justify-content: start;
+        }
 
         .emptyMsg {
             font-size: 35px;
