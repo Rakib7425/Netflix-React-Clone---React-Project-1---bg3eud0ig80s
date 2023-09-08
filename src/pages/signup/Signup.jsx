@@ -15,6 +15,8 @@ import useAuth from '../../hooks/useAuth';
 import { getUser } from '../../store/userSlice'
 import Tudum from '../../components/tudum/Tudum';
 import { useDispatch } from 'react-redux';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { auth } from '../../firebase/firebase';
 
 const Signup = () => {
     const [name, setName] = useState('');
@@ -79,10 +81,45 @@ const Signup = () => {
         }
 
     };
+    const signupHandler = async () => {
+        setLoading(true);
+        // let fullName = `${fName} ${lName}`;
+        if (email.length < 5 || !name || password !== cPassword) return;
 
+        try {
+            const user = await createUserWithEmailAndPassword(auth, email, cPassword);
+
+            const updateName = await updateProfile(auth.currentUser, {
+                displayName: name,
+            });
+
+            if (user) {
+                setUser(user);
+                // console.log(user);
+                toast.success('Account has been created successfully!');
+                setName('');
+                setEmail('');
+                setPassword('');
+                setCPassword('');
+
+                setTimeout(() => {
+                    setLoading(false);
+                    navigate('/explore-plans');
+                }, 2000)
+            };
+        }
+        catch (error) {
+            // console.log('Error From signupHandler', error);
+            // toast.error(`Signup Failed : ${error.message}`);
+            console.error(error);
+            toast.error(`${error.message} OR EmailId already registered!`);
+            setLoading(false);
+        }
+    };
     const handleSignup = () => {
         if ((name.length > 0 && email) && (password === cPassword)) {
-            signup();
+            // signup();
+            signupHandler();
 
         } else {
             return false;

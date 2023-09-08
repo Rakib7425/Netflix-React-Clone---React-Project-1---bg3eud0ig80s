@@ -15,6 +15,8 @@ import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import Tudum from '../../components/tudum/Tudum';
 import useAuth from '../../hooks/useAuth';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../firebase/firebase';
 
 const Login = () => {
     const projectId = import.meta.env.VITE_APP_PROJECT_ID;
@@ -47,7 +49,7 @@ const Login = () => {
         data: bodyContent,
     };
 
-    const login = async () => {
+    const newtonLogin = async () => {
         try {
             setLoading(true);
             let response = await axios.request(reqOptions);
@@ -71,9 +73,31 @@ const Login = () => {
         }
 
     }
+    const loginHandler = async () => {
+        setLoading(true);
+        if (email.length < 5 || !password) return;
+        try {
+            const user = await signInWithEmailAndPassword(auth, email, password);
+            console.log(user);
+            if (user) {
+                setUserData(user);
 
+                setTimeout(() => {
+                    setLoading(false);
+                    navigate('/');
+                }, 2000);
+            }
+            toast.success(`Successfully logged in`)
+        } catch (error) {
+            setLoading(false);
+            const errMsg = error?.message;
+            console.error(error, errMsg);
+            toast.error(`${errMsg}`);
+        }
+    };
     const handleSignIn = () => {
-        login();
+        // newtonLogin();
+        loginHandler()
     }
 
     const sxx = () => {
