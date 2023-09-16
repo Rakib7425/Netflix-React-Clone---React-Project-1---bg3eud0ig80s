@@ -174,7 +174,7 @@ const Login = () => {
                                 />
                                 <label htmlFor="remember-me">Remember me</label>
                             </div>
-                            {/* <Link >Need help?</Link> */}
+                            {/* <Link to={'user/forgot'}>Need help?</Link> */}
                         </div>
                     </form>
                     <div className="social-accounts m">

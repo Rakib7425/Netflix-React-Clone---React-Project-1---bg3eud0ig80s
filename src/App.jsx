@@ -24,7 +24,6 @@ import "react-toastify/ReactToastify.min.css";
 import Profile from "./pages/profile/Profile";
 import ExplorePlans from "./pages/explorePlans/ExplorePlans";
 
-
 function App() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
