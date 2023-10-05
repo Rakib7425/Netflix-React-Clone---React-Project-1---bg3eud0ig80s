@@ -41,6 +41,12 @@
     transform: translate(-50%, -50%);
     background: rgba(0, 0, 0, .75);
 
+    .suggestion {
+        color: greenyellow;
+        font-size: 10px;
+        text-align: center;
+    }
+
     .new {
         color: white;
         text-align: center;
