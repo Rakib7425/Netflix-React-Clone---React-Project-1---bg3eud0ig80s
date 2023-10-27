@@ -14,9 +14,11 @@ const PlanCard = ({ plan }) => {
 			<p className='plan-description'>{plan.description}</p>
 			<Link
 				to={newtonUser || firebaseUser ? "/" : "/login"}
-				className={plan.active ? "active " : "subscribe-button"}
+				className={
+					(newtonUser || firebaseUser) && plan.active ? "active " : "subscribe-button"
+				}
 			>
-				Subscribe{plan.active ? "d" : ""}
+				Subscribe{(newtonUser || firebaseUser) && plan.active ? "d" : ""}
 			</Link>
 		</div>
 	);
