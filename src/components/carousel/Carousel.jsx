@@ -15,7 +15,7 @@ import Genres from "../genres/Genres";
 
 
 import "./style.scss";
-import { MdOutlinePlaylistAdd } from "react-icons/md";
+// import { MdOutlinePlaylistAdd } from "react-icons/md";
 
 const Carousel = ({ data, loading, endpoint, title }) => {
     const carouselContainer = useRef();
