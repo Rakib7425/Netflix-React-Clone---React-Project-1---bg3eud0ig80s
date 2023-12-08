@@ -21,7 +21,7 @@ const useAuth = () => {
 	const loginWithGoogle = async () => {
 		try {
 			const user = await signInWithPopup(auth, provider);
-			console.log(user);
+			// console.log(user);
 			toast.success(`Successfully logged in`);
 			// Dispatch action to set user details in Redux store
 			if (user) {
@@ -39,7 +39,7 @@ const useAuth = () => {
 	const loginWithGitHub = async () => {
 		try {
 			const user = await signInWithPopup(auth, githubProvider);
-			console.log(user);
+			// console.log(user);
 			if (user) {
 				// setUserData(user);
 				localStorage.setItem("netflix", JSON.stringify(user));
@@ -56,7 +56,7 @@ const useAuth = () => {
 	const loginWithTwitter = async () => {
 		try {
 			const user = await signInWithPopup(auth, twitterProvider);
-			console.log(user);
+			// console.log(user);
 			if (user) {
 				// setUserData(user);
 				localStorage.setItem("netflix", JSON.stringify(user));
