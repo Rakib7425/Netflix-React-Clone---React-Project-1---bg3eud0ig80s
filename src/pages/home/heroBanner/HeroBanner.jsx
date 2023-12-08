@@ -48,7 +48,7 @@ const HeroBanner = () => {
 	});
 
 	useEffect(() => {
-		// console.log(getUserName);
+		
 		setName(getUserName);
 	}, [name]);
 
