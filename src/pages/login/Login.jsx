@@ -76,7 +76,7 @@ const Login = () => {
 		setLoading(true);
 		if (email.length < 5 || !password) {
 			setLoading(false);
-			toast.warn(`Fill required fields, email >5 char & password > 6 char !!`);
+			toast.warn(`Fill required fields, email > 5 char & password > 6 char !!`);
 			return;
 		}
 		try {
