@@ -74,10 +74,14 @@ const Login = () => {
 
 	const loginHandler = async () => {
 		setLoading(true);
-		if (email.length < 5 || !password) return;
+		if (email.length < 5 || !password) {
+			setLoading(false);
+			toast.warn(`Fill required fields, email >5 char & password > 6 char !!`);
+			return;
+		}
 		try {
 			const user = await signInWithEmailAndPassword(auth, email, password);
-			// console.log(user);
+			console.log(user);
 			if (user) {
 				setUserData(user);
 
