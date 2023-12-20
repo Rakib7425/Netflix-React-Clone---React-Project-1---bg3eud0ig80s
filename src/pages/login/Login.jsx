@@ -74,7 +74,7 @@ const Login = () => {
 
 	const loginHandler = async () => {
 		setLoading(true);
-		if (email.length < 5 || !password) {
+		if (email.length < 5 || password.length < 6) {
 			setLoading(false);
 			toast.warn(`Fill required fields, email > 5 char & password > 6 char !!`);
 			return;
